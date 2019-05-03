@@ -1,0 +1,19 @@
+CONFIGURATION
+Edit line27 dbuser and dbname in .env folder
+Creation of Entities and db form Migrations Repertory :
+    php bin/console doctrine:database:create 
+    php bin/console doctrine:mapping:import App\\Entity annotation --path=src/Entity
+    php bin/console make:migration
+    php bin/console   doctrine:generate:entities
+Install phpunit-bridge
+     composer require --dev symfony/phpunit-bridge
+     ./bin/phpunit
+
+RUN SERVER (localhost:8000)
+    php bin/console server:start
+
+MAKE TEST
+Unit test
+    ./bin/phpunit
+Unit test with html creation 
+    ./bin/phpunit --coverage-html=cov
