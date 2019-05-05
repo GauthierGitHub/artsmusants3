@@ -16,6 +16,7 @@ class BlancdeblancController extends AbstractController
     {
         return $this->render('blancdeblanc/index.html.twig', [
             'controller_name' => 'BlancdeblancController',
+            'current_menu' => 'blancdeblanc',
         ]);
     }
 
