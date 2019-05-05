@@ -8,10 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
  * Paintings
  *
  * @ORM\Table(name="paintings", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_CDBED5082B36786B", columns={"title"})}, indexes={@ORM\Index(name="IDX_CDBED50812469DE2", columns={"category_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\PaintingsRepository")
  */
 class Paintings
 {
+    public function __toString() {
+        return $this->title;
+    }
     /**
      * @var int
      *
@@ -72,6 +75,95 @@ class Paintings
      * })
      */
     private $category;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getHeight(): ?int
+    {
+        return $this->height;
+    }
+
+    public function setHeight(int $height): self
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    public function getWidth(): ?int
+    {
+        return $this->width;
+    }
+
+    public function setWidth(int $width): self
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    public function getYear(): ?int
+    {
+        return $this->year;
+    }
+
+    public function setYear(int $year): self
+    {
+        $this->year = $year;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Categories
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Categories $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
 
 
 }
