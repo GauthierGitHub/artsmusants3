@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paintings index{% endblock %}
+
+{% block body %}
+    <h1>Paintings index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Height</th>
+                <th>Width</th>
+                <th>Year</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for painting in paintings %}
+            <tr>
+                <td>{{ painting.id }}</td>
+                <td>{{ painting.title }}</td>
+                <td>{{ painting.category }}</td>
+                <td>{{ painting.height }}</td>
+                <td>{{ painting.width }}</td>
+                <td>{{ painting.year }}</td>
+                <td>{{ painting.description }}</td>
+                <td>{{ painting.price }}</td>
+                <td>
+                    <a href="{{ path('paintings_show', {'id': painting.id}) }}">show</a>
+                    <a href="{{ path('paintings_edit', {'id': painting.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Create new</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('paintings_new') }}">Nouvelle peinture</a>
+{% endblock %}
