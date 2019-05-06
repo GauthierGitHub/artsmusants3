@@ -33,6 +33,7 @@
                 <td>
                     <a href="{{ path('paintings_show', {'id': painting.id}) }}">show</a>
                     <a href="{{ path('paintings_edit', {'id': painting.id}) }}">edit</a>
+                    <a href="{{ asset('uploads/brochures/' ~ painting.brochure) }}">View painting</a>
                 </td>
             </tr>
         {% else %}
@@ -43,5 +44,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('paintings_new') }}">Nouvelle peinture</a>
+    <a href="{{ path('paintings_new') }}">New painting</a>
 {% endblock %}

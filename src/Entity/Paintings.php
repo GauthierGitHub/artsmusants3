@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+// for upload
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Paintings
@@ -75,6 +77,15 @@ class Paintings
      * })
      */
     private $category;
+
+
+    /**
+     * @ORM\Column(name="brochure", type="string", length=255, nullable=false)
+     *
+     * @Assert\NotBlank(message="Please, upload the product brochure as a jpg file.")
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+     */
+    private $brochure;
 
     public function getId(): ?int
     {
@@ -165,5 +176,16 @@ class Paintings
         return $this;
     }
 
+    public function getBrochure(): ?string
+    {
+        return $this->brochure;
+    }
+
+    public function setBrochure($brochure): self
+    {
+        $this->brochure = $brochure;
+
+        return $this;
+    }
 
 }

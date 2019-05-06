@@ -6,6 +6,8 @@ use App\Entity\Paintings;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+//for upload
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class PaintingsType extends AbstractType
 {
@@ -19,6 +21,7 @@ class PaintingsType extends AbstractType
             ->add('price')
             ->add('title')
             ->add('category')
+            ->add('brochure', FileType::class, ['label' => 'Brochure (jpg file)'])
         ;
     }
 
