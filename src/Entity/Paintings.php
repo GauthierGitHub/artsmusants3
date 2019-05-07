@@ -80,12 +80,12 @@ class Paintings
 
 
     /**
-     * @ORM\Column(name="brochure", type="string", length=255, nullable=false)
+     * @ORM\Column(name="picture", type="string", length=255, nullable=false)
      *
-     * @Assert\NotBlank(message="Please, upload the product brochure as a jpg file.")
+     * @Assert\NotBlank(message="Please, upload the product picture as a jpg file.")
      * @Assert\File(mimeTypes={ "image/jpeg" })
      */
-    private $brochure;
+    private $picture;
 
     public function getId(): ?int
     {
@@ -176,14 +176,14 @@ class Paintings
         return $this;
     }
 
-    public function getBrochure(): ?string
+    public function getpicture(): ?string
     {
-        return $this->brochure;
+        return $this->picture;
     }
 
-    public function setBrochure($brochure): self
+    public function setpicture($picture): self
     {
-        $this->brochure = $brochure;
+        $this->picture = $picture;
 
         return $this;
     }

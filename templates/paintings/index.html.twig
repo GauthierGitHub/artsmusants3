@@ -33,7 +33,7 @@
                 <td>
                     <a href="{{ path('paintings_show', {'id': painting.id}) }}">Show</a>
                     <a href="{{ path('paintings_edit', {'id': painting.id}) }}">Edit</a>
-                    <a href="{{ asset('uploads/brochures/' ~ painting.brochure) }}">View painting</a>
+                    <a href="{{ asset('uploads/pictures/' ~ painting.picture) }}">View painting</a>
                 </td>
             </tr>
         {% else %}
