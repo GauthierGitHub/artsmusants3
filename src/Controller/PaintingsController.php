@@ -39,10 +39,12 @@ class PaintingsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             // $file stores the uploaded PDF file bad doc in https://symfony.com/doc/current/controller/upload_file.html
+            // Correction to official doc : wrong adress
             // vendor/symfony/http-foundation/File/UploadedFile.php
-            /** @var Symfony\HttpFoundation\File\UploadedFile $file *///corrected : https://stackoverflow.com/questions/49604601/call-to-a-member-function-guessextension-on-string
+            /** @var Symfony\HttpFoundation\File\UploadedFile $file */
             $file = $form->get('brochure')->getData();;
 
+            //corrected : https://stackoverflow.com/questions/49604601/call-to-a-member-function-guessextension-on-string
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
             // Move the file to the directory where brochures are stored
@@ -92,6 +94,32 @@ class PaintingsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // $file stores the uploaded PDF file bad doc in https://symfony.com/doc/current/controller/upload_file.html
+            // Correction to official doc : wrong adress
+            // vendor/symfony/http-foundation/File/UploadedFile.php
+            /** @var Symfony\HttpFoundation\File\UploadedFile $file */
+            $file = $form->get('brochure')->getData();;
+
+            //corrected : https://stackoverflow.com/questions/49604601/call-to-a-member-function-guessextension-on-string
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+
+            // Move the file to the directory where brochures are stored
+            try {
+                $file->move(
+                    $this->getParameter('brochures_directory'),
+                    $fileName
+                );
+            } catch (FileException $e) {
+                // ... handle exception if something happens during file upload
+            }
+
+            // updates the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $painting->setBrochure($fileName);
+
+            // original build ... persist the $painting variable or any other work 
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('paintings_index', [

@@ -21,7 +21,9 @@ class PaintingsType extends AbstractType
             ->add('price')
             ->add('title')
             ->add('category')
-            ->add('brochure', FileType::class, ['label' => 'Brochure (jpg file)'])
+            ->add('brochure', FileType::class, ['label' => 'Brochure (jpg file)',
+            //required for edit painting
+            'data_class' => null])
         ;
     }
 
