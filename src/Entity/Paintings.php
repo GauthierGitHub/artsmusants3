@@ -50,7 +50,7 @@ class Paintings
     /**
      * @var string|null
      *
-     * @ORM\Column(name="description", type="text", length=0, nullable=true)
+     * @ORM\Column(name="description", type="text", length=1000000, nullable=true)
      */
     private $description;
 

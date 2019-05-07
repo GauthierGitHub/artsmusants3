@@ -16,7 +16,7 @@
                 <th>Year</th>
                 <th>Description</th>
                 <th>Price</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -31,14 +31,14 @@
                 <td>{{ painting.description }}</td>
                 <td>{{ painting.price }}</td>
                 <td>
-                    <a href="{{ path('paintings_show', {'id': painting.id}) }}">show</a>
-                    <a href="{{ path('paintings_edit', {'id': painting.id}) }}">edit</a>
+                    <a href="{{ path('paintings_show', {'id': painting.id}) }}">Show</a>
+                    <a href="{{ path('paintings_edit', {'id': painting.id}) }}">Edit</a>
                     <a href="{{ asset('uploads/brochures/' ~ painting.brochure) }}">View painting</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">Create new</td>
+                <td colspan="8">No records</td>
             </tr>
         {% endfor %}
         </tbody>

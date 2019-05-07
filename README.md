@@ -1,4 +1,4 @@
-CONFIGURATION
+CONFIGURATION:
     Edit line27 dbuser and dbname in .env folder
 
     Creation of Entities and db form Migrations Repertory :
@@ -12,11 +12,11 @@ CONFIGURATION
     exemple for booking
         @ORM\Entity(repositoryClass="App\Repository\BookingsRepository")
 
-SERVER (localhost:8000)
+SERVER (localhost:8000):
     runserver
         php bin/console server:start
 
-TEST
+TEST:
     Install phpunit-bridge
         composer require --dev symfony/phpunit-bridge
         ./bin/phpunit
