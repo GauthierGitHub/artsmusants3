@@ -42,24 +42,24 @@ class PaintingsController extends AbstractController
             // Correction to official doc : wrong adress
             // vendor/symfony/http-foundation/File/UploadedFile.php
             /** @var Symfony\HttpFoundation\File\UploadedFile $file */
-            $file = $form->get('brochure')->getData();;
+            $file = $form->get('picture')->getData();;
 
             //corrected : https://stackoverflow.com/questions/49604601/call-to-a-member-function-guessextension-on-string
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
-            // Move the file to the directory where brochures are stored
+            // Move the file to the directory where pictures are stored
             try {
                 $file->move(
-                    $this->getParameter('brochures_directory'),
+                    $this->getParameter('pictures_directory'),
                     $fileName
                 );
             } catch (FileException $e) {
                 // ... handle exception if something happens during file upload
             }
 
-            // updates the 'brochure' property to store the PDF file name
+            // updates the 'picture' property to store the PDF file name
             // instead of its contents
-            $painting->setBrochure($fileName);
+            $painting->setpicture($fileName);
 
             // original build ... persist the $painting variable or any other work 
             $entityManager = $this->getDoctrine()->getManager();
@@ -99,24 +99,24 @@ class PaintingsController extends AbstractController
             // Correction to official doc : wrong adress
             // vendor/symfony/http-foundation/File/UploadedFile.php
             /** @var Symfony\HttpFoundation\File\UploadedFile $file */
-            $file = $form->get('brochure')->getData();;
+            $file = $form->get('picture')->getData();;
 
             //corrected : https://stackoverflow.com/questions/49604601/call-to-a-member-function-guessextension-on-string
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
-            // Move the file to the directory where brochures are stored
+            // Move the file to the directory where pictures are stored
             try {
                 $file->move(
-                    $this->getParameter('brochures_directory'),
+                    $this->getParameter('pictures_directory'),
                     $fileName
                 );
             } catch (FileException $e) {
                 // ... handle exception if something happens during file upload
             }
 
-            // updates the 'brochure' property to store the PDF file name
+            // updates the 'picture' property to store the PDF file name
             // instead of its contents
-            $painting->setBrochure($fileName);
+            $painting->setpicture($fileName);
 
             // original build ... persist the $painting variable or any other work 
 
