@@ -1,6 +1,6 @@
 CONFIGURATION:
-    Edit line27 dbuser and dbname in .env folder
 
+    Edit line27 dbuser and dbname in .env folder
     Creation of Entities and db form Migrations Repertory :
         php bin/console doctrine:database:create 
         php bin/console doctrine:mapping:import App\\Entity annotation --path=src/Entity
@@ -13,10 +13,12 @@ CONFIGURATION:
         @ORM\Entity(repositoryClass="App\Repository\BookingsRepository")
 
 SERVER (localhost:8000):
+
     runserver
         php bin/console server:start
 
 TEST:
+
     Install phpunit-bridge
         composer require --dev symfony/phpunit-bridge
         ./bin/phpunit
