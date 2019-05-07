@@ -26,27 +26,33 @@
         </div>
 
         <div id="CouleursEtMatieresCarousel" class="col-12 col-sm-4 carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                {% for painting in paintingsCouleursEtMatieres %}
 
-                <div class="carousel-item {% if painting == paintingsCouleursEtMatieres[0] %} active{% endif %}">
-                    <img class="d-block w-100" src="{{ asset('uploads/pictures/' ~ painting.picture) }}"
-                        alt="picture slide">
+            <a href="{{path('couleursetmatieres')}}">
+                <div class="carousel-inner">
+                    {% for painting in paintingsCouleursEtMatieres %}
+
+                    <div class="carousel-item {% if painting == paintingsCouleursEtMatieres[0] %} active{% endif %}">
+                        <img class="d-block w-100" src="{{ asset('uploads/pictures/' ~ painting.picture) }}"
+                            alt="picture slide">
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
+            </a>
         </div>
 
         <div id="WhiteSpiritCarousel" class="col-12 col-sm-4 carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                {% for painting in paintingsWhiteSpirit %}
 
-                <div class="carousel-item {% if painting == paintingsWhiteSpirit[0] %} active{% endif %}">
-                    <img class="d-block w-100" src="{{ asset('uploads/pictures/' ~ painting.picture) }}"
-                        alt="picture slide">
+            <a href="{{path('whitespirit')}}">
+                <div class="carousel-inner">
+                    {% for painting in paintingsWhiteSpirit %}
+
+                    <div class="carousel-item {% if painting == paintingsWhiteSpirit[0] %} active{% endif %}">
+                        <img class="d-block w-100" src="{{ asset('uploads/pictures/' ~ painting.picture) }}"
+                            alt="picture slide">
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
+            </a>
         </div>
 
     </div>

@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Blanc de Blanc - Arts Musants{% endblock %}
+{% block title %}Couleur &amp; Matières - Arts Musants{% endblock %}
 
 {% block body %}
 
 <div class="jumbotron text-center">
-    <h1>Blanc de Blanc</h1>
+    <h1>Couleur &amp; Matières</h1>
 </div>
 
 <div class="container">
     <div class="row">
 
-        {% for painting in paintingsBlancDeBlanc %}
+        {% for painting in paintingsCouleursEtMatieres %}
 
         <div class="col-12 col-sm-4 mt-4">
             <a href="{{ asset('uploads/pictures/' ~ painting.picture) }}">

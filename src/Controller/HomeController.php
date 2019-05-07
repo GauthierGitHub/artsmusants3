@@ -15,9 +15,10 @@ class HomeController extends AbstractController
     {
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'paintingsBlancDeBlanc' => $paintingsRepository->findBy(['category' => 1]),
-            'paintingsCouleursEtMatieres' => $paintingsRepository->findBy(['category' => 2]),
-            'paintingsWhiteSpirit' => $paintingsRepository->findBy(['category' => 3]),
+            'current_menu' => 'home',
+            'paintingsBlancDeBlanc' => $paintingsRepository->findBy(['category' => 1], null, 5),
+            'paintingsCouleursEtMatieres' => $paintingsRepository->findBy(['category' => 2], null, 5),
+            'paintingsWhiteSpirit' => $paintingsRepository->findBy(['category' => 3], null, 5),
         ]);
     }
 }
