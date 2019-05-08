@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<div class="row">
+    <h2 class="col-12 mt-4">{{ painting.title }}</h2>
+    <div class="col-12 text-center">
+            <a href="{{ path('customers_book', { 'painting_id': painting.id})  }}">Book</a>
+
+        <a href="{{ path('customers_sale', { 'painting_id': painting.id}) }}">Buy</a>
+    </div>
+    <img class="col-6 mt-4 mx-auto" src="{{ asset('uploads/pictures/' ~ painting.picture) }}"
+        alt="{{ painting.title }}">
+
+</div>
+{% endblock %}

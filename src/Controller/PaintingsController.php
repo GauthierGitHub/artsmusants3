@@ -156,4 +156,20 @@ class PaintingsController extends AbstractController
         // uniqid(), which is based on timestamps
         return md5(uniqid());
     }
+
+    /**
+     * 
+     * CLIENT SIDE 
+     * 
+    */
+
+    /**
+     * @Route("/{id}/show", name="paintings_showOnePublic", methods={"GET"})
+     */
+    public function showOnePublic(Paintings $painting): Response
+    {
+        return $this->render('paintings/showOnePublic.html.twig', [
+            'painting' => $painting,
+        ]);
+    }
 }

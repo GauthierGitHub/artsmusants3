@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Proxies\__CG__\App\Entity\Paintings;
+use Proxies\__CG__\App\Entity\Customers;
 
 /**
  * @Route("/bookings")
@@ -85,12 +87,37 @@ class BookingsController extends AbstractController
      */
     public function delete(Request $request, Bookings $booking): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$booking->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $booking->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($booking);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('bookings_index');
+    }
+
+
+    /**
+     * 
+     * CLIENT SIDE 
+     * 
+     */
+
+
+    /**
+     * @Route("bookingsPublic_new", name="bookingsPublic_new", methods={"GET","POST"})
+     */
+    public function bookingsPublic_new($painting, $customer): Response
+    {
+        $booking = new Bookings();
+        $booking->setPainting($painting);
+        $booking->setCustomer($customer);
+        $booking->setDate(new \DateTime());
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($booking);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('home');
+
     }
 }
