@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Customers;
+use App\Entity\Paintings;
 use App\Form\CustomersType;
 use App\Repository\CustomersRepository;
+use App\Repository\PaintingsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -85,12 +87,57 @@ class CustomersController extends AbstractController
      */
     public function delete(Request $request, Customers $customer): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$customer->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $customer->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($customer);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('customers_index');
+    }
+
+    /**
+     * 
+     * CLIENT SIDE 
+     * 
+     */
+
+    /**
+     * @Route("/{painting_id}/booking", name="customers_book", methods={"GET","POST"})
+     */
+    public function book(Request $request, $painting_id, PaintingsRepository $paintingsRepository): Response
+    {
+        $painting = $paintingsRepository->find($painting_id);
+
+        $customer = new Customers();
+
+        $form = $this->createForm(CustomersType::class, $customer);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($customer);
+            $entityManager->flush();
+
+            $response = $this->forward('App\Controller\BookingsController::bookingsPublic_new', [
+                'customer' => $customer,
+                'painting' => $painting,
+            ]);
+
+            return $response;
+        }
+
+        return $this->render('bookandsale/book.html.twig', [
+            'painting' => $painting,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("{painting_id}/buy", name="customers_sale", methods={"GET","POST"})
+     */
+    public function sale()
+    {
+        var_dump($_POST);
     }
 }
