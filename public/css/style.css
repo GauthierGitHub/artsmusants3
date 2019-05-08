@@ -1,0 +1,22 @@
+/*GLOBAL*/
+
+* {
+    font-family: 'Sofia', cursive;
+    color: white; 
+}
+
+body,
+nav {
+    background-color: black;
+    /*
+    Photo by Francesco Ungaro from Pexels
+    https://www.pexels.com/photo/starry-sky-998641/
+    Customized by Gauthier Barbet
+    */
+    background-image: url('../images/overlay-328225_640.jpg');
+    background-size: cover;
+}
+
+.jumbotron {
+    background-image: url('../images/a_mochagrunge.png');
+}

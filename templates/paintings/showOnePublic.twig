@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    <h2>{{ painting.title }}</h2>
+
+    <img src="{{ painting.picture }}" alt="{{ painting.title }}">
+
+    <a href="{{ path('bookings_new'), {'id': painting.id}) }}">Book</a>
+
+    <a href="{{ path('sales_new', {'id': painting.id}) }}">Buy</a>
+
+{% endblock %}
