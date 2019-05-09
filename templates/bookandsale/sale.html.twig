@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paintings{% endblock %}
+
+{% block body %}
+<div class="row">
+    <h1 class="col-12">{{ painting.title }}</h1>
+    <div class="col-xs-12 col-sm-6">
+        <img  src="{{ asset('uploads/pictures/' ~ painting.picture) }}" alt="{{ painting.title }}">
+    </div>
+    <div class="row col-xs-12 col-sm-6">
+        <table class="table col-12">
+            <tbody>
+                <tr>
+                    <th>Category</th>
+                    <td>{{ painting.category }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ painting.title }}</td>
+                </tr>
+                <tr>
+                    <th>Height</th>
+                    <td>{{ painting.height }}</td>
+                </tr>
+                <tr>
+                    <th>Width</th>
+                    <td>{{ painting.width }}</td>
+                </tr>
+                <tr>
+                    <th>Year</th>
+                    <td>{{ painting.year }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ painting.description }}</td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td>{{ painting.price }}€</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="col-12">Your details:</h3>
+        <div class="col-12">
+            {{ include('customers/_form.html.twig') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -118,7 +118,7 @@ class BookingsController extends AbstractController
         $entityManager->flush();
 
         //confirmation mail
-        $message = (new \Swift_Message('Hello Email'))
+        $message = (new \Swift_Message('Arts Musants - Booking'))
             ->setFrom('artsmusants.com@gmail.com')
             ->setTo($customer->getEmail())
             ->setBody(
@@ -127,6 +127,7 @@ class BookingsController extends AbstractController
                     'emails.html.twig',
                     ['name' => $customer->getFirstName(),
                     'painting' => $painting->getTitle(),
+                    'action' => 'booking',
                     ]
                 ),
                 'text/html'

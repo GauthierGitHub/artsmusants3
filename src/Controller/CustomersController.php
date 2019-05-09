@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 /**
  * @Route("/customers")
  */
@@ -114,6 +115,7 @@ class CustomersController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $entityManager = $this->getDoctrine()->getManager();
 
             $entityManager->persist($customer);
@@ -122,7 +124,6 @@ class CustomersController extends AbstractController
             $response = $this->forward('App\Controller\BookingsController::bookingsPublic_new', [
                 'customer' => $customer,
                 'painting' => $painting,
-                'action' => 'booking',
             ]);
 
             return $response;
@@ -137,8 +138,15 @@ class CustomersController extends AbstractController
     /**
      * @Route("{painting_id}/buy", name="customers_sale", methods={"GET","POST"})
      */
-    public function sale()
+    public function sale(Request $request, $painting_id, PaintingsRepository $paintingsRepository): Response
     {
         var_dump($_POST);
+        exit();
+        $painting = $paintingsRepository->find($painting_id);
+
+
+        return $this->render('bookandsale/book.html.twig', [
+            'painting' => $painting,
+            'form' => $form->createView(),
+        ]);
     }
-}
