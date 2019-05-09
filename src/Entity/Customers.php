@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Customers
  *
- * @ORM\Table(name="customers", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_62534E21E7927C74", columns={"email"})})
+ * @ORM\Table(name="customers")
  * @ORM\Entity(repositoryClass="App\Repository\CustomersRepository")
  */
 class Customers
@@ -27,42 +27,42 @@ class Customers
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
 
     /**
-     * @var string|null
+     * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
+     * @ORM\Column(name="lastname", type="string", length=255)
      */
     private $lastname;
 
     /**
-     * @var string|null
+     * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      */
     private $firstname;
 
     /**
-     * @var string|null
+     * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255, nullable=true)
+     * @ORM\Column(name="address", type="string", length=255)
      */
     private $address;
 
     /**
-     * @var string|null
+     * @var string
      *
-     * @ORM\Column(name="postalcode", type="string", length=255, nullable=true)
+     * @ORM\Column(name="postalcode", type="string", length=255)
      */
     private $postalcode;
 
     /**
-     * @var string|null
+     * @var string
      *
-     * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     * @ORM\Column(name="city", type="string", length=255)
      */
     private $city;
 
