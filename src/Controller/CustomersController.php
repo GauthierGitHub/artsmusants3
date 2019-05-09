@@ -11,7 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 /**
  * @Route("/customers")
  */
@@ -116,12 +115,14 @@ class CustomersController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+
             $entityManager->persist($customer);
             $entityManager->flush();
 
             $response = $this->forward('App\Controller\BookingsController::bookingsPublic_new', [
                 'customer' => $customer,
                 'painting' => $painting,
+                'action' => 'booking',
             ]);
 
             return $response;

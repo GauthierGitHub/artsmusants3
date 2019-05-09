@@ -107,7 +107,7 @@ class BookingsController extends AbstractController
     /**
      * @Route("bookingsPublic_new", name="bookingsPublic_new", methods={"GET","POST"})
      */
-    public function bookingsPublic_new($painting, $customer): Response
+    public function bookingsPublic_new($painting, $customer, \Swift_Mailer $mailer): Response
     {
         $booking = new Bookings();
         $booking->setPainting($painting);
@@ -117,7 +117,23 @@ class BookingsController extends AbstractController
         $entityManager->persist($booking);
         $entityManager->flush();
 
-        return $this->redirectToRoute('home');
+        //confirmation mail
+        $message = (new \Swift_Message('Hello Email'))
+            ->setFrom('artsmusants.com@gmail.com')
+            ->setTo($customer->getEmail())
+            ->setBody(
+                $this->renderView(
+                    // templates/emails/registration.html.twig
+                    'emails.html.twig',
+                    ['name' => $customer->getFirstName(),
+                    'painting' => $painting->getTitle(),
+                    ]
+                ),
+                'text/html'
+            );
+        $mailer->send($message);
 
+
+        return $this->redirectToRoute('home');
     }
 }
