@@ -134,7 +134,6 @@ class BookingsController extends AbstractController
             );
         $mailer->send($message);
 
-
         return $this->redirectToRoute('home');
     }
 }

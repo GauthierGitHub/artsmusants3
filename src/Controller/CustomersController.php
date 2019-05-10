@@ -121,32 +121,45 @@ class CustomersController extends AbstractController
             $entityManager->persist($customer);
             $entityManager->flush();
 
-            $response = $this->forward('App\Controller\BookingsController::bookingsPublic_new', [
+            return $this->forward('App\Controller\BookingsController::bookingsPublic_new', [
                 'customer' => $customer,
                 'painting' => $painting,
             ]);
-
-            return $response;
         }
 
-        return $this->render('bookandsale/book.html.twig', [
+        return $this->render('orders/book.html.twig', [
             'painting' => $painting,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("{painting_id}/buy", name="customers_sale", methods={"GET","POST"})
+     * @Route("/{painting_id}/buy", name="customers_sale", methods={"GET","POST"})
      */
     public function sale(Request $request, $painting_id, PaintingsRepository $paintingsRepository): Response
     {
-        var_dump($_POST);
-        exit();
+        //customer is recording but sale is canceled if payment is not accepted
         $painting = $paintingsRepository->find($painting_id);
 
+        $customer = new Customers();
 
-        return $this->render('bookandsale/book.html.twig', [
+        $form = $this->createForm(CustomersType::class, $customer);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($customer);
+            $entityManager->flush();
+
+            return $this->forward('App\Controller\SalesController::checkout', [
+                'customer' => $customer,
+                'painting' => $painting,
+            ]);
+        }
+
+        return $this->render('orders/sale.html.twig', [
             'painting' => $painting,
             'form' => $form->createView(),
         ]);
     }
+}
