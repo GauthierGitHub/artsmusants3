@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order - Arts Musants{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <h1 class="col-12">Order - {{ painting.title }}</h1>
+    <div class="col-xs-12 col-sm-6">
+        <img src="{{ asset('uploads/pictures/' ~ painting.picture) }}" alt="{{ painting.title }}">
+    </div>
+    <div class="row col-xs-12 col-sm-6">
+        <table class="table col-12">
+            <tbody>
+                <tr>
+                    <th>Category</th>
+                    <td>{{ painting.category }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ painting.title }}</td>
+                </tr>
+                <tr>
+                    <th>Height</th>
+                    <td>{{ painting.height }}</td>
+                </tr>
+                <tr>
+                    <th>Width</th>
+                    <td>{{ painting.width }}</td>
+                </tr>
+                <tr>
+                    <th>Year</th>
+                    <td>{{ painting.year }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ painting.description }}</td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td>{{ painting.price }}€</td>
+                </tr>
+            </tbody>
+        </table>
+        <section class="col-12">
+            <h3>Your details:</h3>
+            <h4>{{ customer.lastname }} {{ customer.firstname }}</h4>
+            <p>{{ customer.email }}</p>
+            <p>{{ customer.address }}</p>
+            <p>{{ customer.postalcode }}</p>
+            <p>{{ customer.city }}</p>
+        </section>
+        <form action="{{ path('sales_stripe') }}" method="POST">
+            <input type="hidden" name="painting_id" value="{{ painting.id }}"></input>
+            <input type="hidden" name="customer_id" value="{{ customer.id }}"></input>
+            <input type="hidden" name="sale_id" value="{{ sale_id }}"></input>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_Nz5gM2tOvhHk9cvWnxBgMBSD00b8efpS3c" 
+                data-amount="{{ painting.price *100 }}"
+                data-email="{{ customer.email }}" 
+                data-label="Pay with card" 
+                data-name="Arts Musants"
+                data-description="Widget" 
+                data-image="{{ asset('images/logo.jpg') }}" 
+                data-locale="auto"
+                data-currency="eur">
+            </script>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}
