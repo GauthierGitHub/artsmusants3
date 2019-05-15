@@ -20,3 +20,16 @@ nav {
 form input {
     color: black;
 }
+
+textarea {
+    color: black;
+}
+
+/*TABLES*/
+
+table {
+    max-width: 100%;
+}
+td {
+    max-width: 30%;
+}

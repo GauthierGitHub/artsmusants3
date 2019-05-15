@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
- * @Route("/paintings")
+ * @Route("admin/paintings")
  */
 class PaintingsController extends AbstractController
 {

@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Preview</th>
                 <th>Title</th>
                 <th>Category</th>
                 <th>Height</th>
@@ -23,6 +24,7 @@
         {% for painting in paintings %}
             <tr>
                 <td>{{ painting.id }}</td>
+                <td><img class="img-thumbnail" src="{{ asset('uploads/pictures/' ~ painting.picture) }}" alt="{{ painting.title }}"></td>
                 <td>{{ painting.title }}</td>
                 <td>{{ painting.category }}</td>
                 <td>{{ painting.height }}</td>
@@ -33,7 +35,7 @@
                 <td>
                     <a href="{{ path('paintings_show', {'id': painting.id}) }}">Show</a>
                     <a href="{{ path('paintings_edit', {'id': painting.id}) }}">Edit</a>
-                    <a href="{{ asset('uploads/pictures/' ~ painting.picture) }}">View painting</a>
+                    <a href="{{ asset('uploads/pictures/' ~ painting.picture) }}">View</a>
                 </td>
             </tr>
         {% else %}
