@@ -13,7 +13,7 @@ use Proxies\__CG__\App\Entity\Paintings;
 use Proxies\__CG__\App\Entity\Customers;
 
 /**
- * @Route("/bookings")
+ * @Route("admin/bookings")
  */
 class BookingsController extends AbstractController
 {
