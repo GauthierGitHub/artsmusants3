@@ -24,6 +24,7 @@ class CustomersController extends AbstractController
     {
         return $this->render('customers/index.html.twig', [
             'customers' => $customersRepository->findAll(),
+            'current_menu' => 'customers',
         ]);
     }
 

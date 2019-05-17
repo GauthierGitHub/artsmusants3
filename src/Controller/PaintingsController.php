@@ -24,6 +24,7 @@ class PaintingsController extends AbstractController
     {
         return $this->render('paintings/index.html.twig', [
             'paintings' => $paintingsRepository->findAll(),
+            'current_menu' => 'paintings',
         ]);
     }
 
