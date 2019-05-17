@@ -5,14 +5,18 @@
     color: white;
 }
 
+/*
 body,
 nav {
-    background-image: url('../images/overlay-328225_640.jpg');
+    background-image: url('../images/bg.jpg');
     background-size: cover;
 }
+*/
 
 .jumbotron {
-    background-image: url('../images/a_mochagrunge.png');
+    background-image: url('../images/bg_jumbotron.png');
+    padding: 3%;
+    text-shadow: 2px 2px black;
 }
 
 /*FORMS*/
@@ -33,3 +37,5 @@ table {
 td {
     max-width: 30%;
 }
+
+

@@ -11,11 +11,27 @@ CONFIGURATION:
     If repositories are not set, be sure that following line are in entities annonation
     exemple for booking
         @ORM\Entity(repositoryClass="App\Repository\BookingsRepository")
+    Installing Encore
+         composer require encore
+         yarn install
+    install and load sass
+        yarn add sass-loader@^7.0.1 node-sass --dev
+        https://symfony.com/doc/current/frontend/encore/css-preprocessors.html
+        create scss/app.sass in assets folder
+        edit assets/app/js
+    install jQuery
+        yarn add jquery
+    compil css scss & js
+        all folder must be in assets folder
+        yarn encore dev
+        see result in public/build
 
 SERVER (localhost:8000):
 
     runserver
         php bin/console server:start
+        php bin/console server:restart
+        php bin/console server:stop
 
 TEST:
 
