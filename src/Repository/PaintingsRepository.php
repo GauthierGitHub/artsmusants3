@@ -19,6 +19,22 @@ class PaintingsRepository extends ServiceEntityRepository
         parent::__construct($registry, Paintings::class);
     }
 
+    /**
+    * @return Paintings[] Returns an array of Paintings objects
+    */
+    public function findSquareFormat($category)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.height/p.width = 1')
+            ->andWhere('p.category = '.$category)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+
     // /**
     //  * @return Paintings[] Returns an array of Paintings objects
     //  */

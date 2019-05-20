@@ -1,0 +1,45 @@
+/*
+* Inspired by
+* https://codepen.io/boltaway/pen/uGpna
+*/
+
+$t: transparent;
+$n: 5; // # of sections
+
+section {
+  height: 100%;
+  position: absolute;
+  width: calc(100% / #{$n});
+
+  @for $i from 1 through $n {
+    &:nth-of-type(#{$i}) {
+      left: calc((100% / #{$n}) * #{$i - 1});
+    }
+  }
+}
+
+
+.bg-1 {
+  background: linear-gradient(135deg, rgb(0, 0, 0), rgb(36, 37, 37), rgb(36, 36, 39));
+  /*background-attachment: fixed;*/
+}
+
+.bg-2 {
+  background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(42, 42, 44));
+  background-attachment: fixed;
+}
+
+.bg-3 {
+  background: -webkit-radial-gradient(top left, ellipse, rgb(0, 0, 0) 0%, $t), linear-gradient(to bottom, rgb(48, 49, 54), rgb(37, 37, 43) 60%, rgb(30, 31, 34), rgb(20, 19, 22));
+  background-attachment: fixed;
+}
+
+.bg-4 {
+  background: linear-gradient(5deg, #141416, rgb(0, 0, 0));
+  background-attachment: fixed;
+}
+
+.bg-5 {
+  background: linear-gradient(5deg, #1a1a20, #000000);
+  background-attachment: fixed;
+}

@@ -5,19 +5,17 @@
     color: white;
 }
 
-/*
-body,
 nav {
-    background-image: url('../images/bg.jpg');
+    background-image: url('../images/bg-nav.png');
     background-size: cover;
-}
-*/
-
-.jumbotron {
-    background-image: url('../images/bg_jumbotron.png');
     padding: 3%;
     text-shadow: 2px 2px black;
 }
+
+h1, h2{
+    white-space: nowrap;
+    text-align: center;
+    position: relative;}
 
 /*FORMS*/
 
@@ -37,5 +35,3 @@ table {
 td {
     max-width: 30%;
 }
-
-
