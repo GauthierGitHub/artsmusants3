@@ -7,6 +7,7 @@
 
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
+require('../css/pagetransitions.css');
 require('../scss/app.scss');
 require('../js/background.js');
 
