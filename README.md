@@ -15,6 +15,7 @@ CONFIGURATION:
          composer require encore
          yarn install
     install and load sass
+        npm install -g npm 
         yarn add sass-loader@^7.0.1 node-sass --dev
         https://symfony.com/doc/current/frontend/encore/css-preprocessors.html
         create scss/app.sass in assets folder
