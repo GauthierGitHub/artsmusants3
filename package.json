@@ -14,5 +14,7 @@
         "watch": "encore dev --watch",
         "build": "encore production --progress"
     },
-    "dependencies": {}
+    "dependencies": {
+        "tar": "^4.4.8"
+    }
 }
