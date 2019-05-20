@@ -12,15 +12,15 @@
     </title>
 
     {% block stylesheets %}
-    {{ encore_entry_link_tags('app') }}
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
+    {{ encore_entry_link_tags('app') }}
     {% endblock %}
 
 </head>
 
-<body class="bg-light">
+<body class="radial-gradient">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="{{ path('home')}}">Arts Musants</a>
@@ -46,16 +46,25 @@
             </ul>
         </div>
     </nav>
-
+    <section class="bg-1"></section>
+    <section class="bg-2"></section>
+    <section class="bg-3">
+    </section>
+    <section class="bg-4"></section>
+    <section class="bg-5"></section>
     {% block body %}
 
     {% endblock %}
 
+
     {% block javascripts %}
+    <script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {{ encore_entry_script_tags('app') }}
     {% endblock %}
 
 </body>
