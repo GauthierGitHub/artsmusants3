@@ -1,0 +1,18 @@
+/*
+* created by Taylor Hunt
+* https://codepen.io/tigt/#
+* https://codepen.io/tigt/pen/XmdGNN
+*/
+
+@keyframes bg-fade-in {
+    from { background-color: black }
+  }
+  @keyframes content-fade-in {
+    from { opacity: 0 }
+  }
+  
+  html {
+    animation: 1s bg-fade-in;
+    background-color: rgb(28, 32, 37);
+  }
+  body { animation: 1.5s content-fade-in }
