@@ -13,9 +13,9 @@
 
         {% for painting in paintingsBlancDeBlanc %}
 
-        <div class="col-12 col-sm-4 mt-4">
+        <div class="col-9 col-sm-4 row">
             <a href="{{ path('paintings_showOnePublic', {'id': painting.id}) }}">
-            <img src="{{ asset('uploads/pictures/' ~ painting.picture) }}" alt="{{ painting.title }}">
+                <img class="col-12" src="{{ asset('uploads/pictures/' ~ painting.picture) }}" alt="{{ painting.title }}">
             </a>
         </div>
 

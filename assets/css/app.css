@@ -8,14 +8,20 @@
 nav {
     background-image: url('../images/bg-nav.png');
     background-size: cover;
-    padding: 3%;
-    text-shadow: 2px 2px black;
+    text-shadow: 2px 2px rgb(77, 75, 75);
+    z-index: 1;
 }
 
-h1, h2{
+main *{
+    margin: 5px auto;
+}
+
+h1,
+h2 {
     white-space: nowrap;
     text-align: center;
-    position: relative;}
+    position: relative;
+}
 
 /*FORMS*/
 
@@ -32,6 +38,7 @@ textarea {
 table {
     max-width: 100%;
 }
+
 td {
     max-width: 30%;
 }
