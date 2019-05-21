@@ -21,25 +21,30 @@ section {
 
 .bg-1 {
   background: linear-gradient(135deg, rgb(0, 0, 0), rgb(36, 37, 37), rgb(36, 36, 39));
-  /*background-attachment: fixed;*/
+  position: fixed;
+  top: 0;
 }
 
 .bg-2 {
   background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(42, 42, 44));
-  background-attachment: fixed;
+  position: fixed;
+  top: 0;
 }
 
 .bg-3 {
   background: -webkit-radial-gradient(top left, ellipse, rgb(0, 0, 0) 0%, $t), linear-gradient(to bottom, rgb(48, 49, 54), rgb(37, 37, 43) 60%, rgb(30, 31, 34), rgb(20, 19, 22));
-  background-attachment: fixed;
+  position: fixed;
+  top: 0;
 }
 
 .bg-4 {
   background: linear-gradient(5deg, #141416, rgb(0, 0, 0));
-  background-attachment: fixed;
+  position: fixed;
+  top: 0;
 }
 
 .bg-5 {
   background: linear-gradient(5deg, #1a1a20, #000000);
-  background-attachment: fixed;
+  position: fixed;
+  top: 0;
 }
