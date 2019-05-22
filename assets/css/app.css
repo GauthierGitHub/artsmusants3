@@ -40,6 +40,13 @@ a {
 
 /*PICTURES ANIMATIONS*/
 
+
+#BlancDeBlancCarousel:hover>a,
+#CouleursEtMatieresCarousel:hover>a,
+#WhiteSpiritCarousel:hover>a {
+    text-decoration: none;
+}
+
 a img {
     transition: transform 3s; /* Animation */
 }
