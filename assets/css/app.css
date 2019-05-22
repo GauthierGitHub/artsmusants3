@@ -23,6 +23,10 @@ h2 {
     position: relative;
 }
 
+h1, h2, h3, h4, p, a {
+    position: relative;
+}
+
 /*FORMS*/
 
 form input {
@@ -50,6 +54,14 @@ textarea {
 
 form button{
     margin: 0 50%;
+}
+
+#stripe {
+    float: right;
+}
+
+#stripe button{
+    margin: 0;
 }
 
 /*TABLES*/

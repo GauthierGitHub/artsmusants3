@@ -49,23 +49,18 @@
             <p>{{ customer.address }}</p>
             <p>{{ customer.postalcode }}</p>
             <p>{{ customer.city }}</p>
+            <form id="stripe" action="{{ path('sales_stripe') }}" method="POST">
+                <input type="hidden" name="painting_id" value="{{ painting.id }}"></input>
+                <input type="hidden" name="customer_id" value="{{ customer.id }}"></input>
+                <input type="hidden" name="sale_id" value="{{ sale_id }}"></input>
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="pk_test_Nz5gM2tOvhHk9cvWnxBgMBSD00b8efpS3c" data-amount="{{ painting.price *100 }}"
+                    data-email="{{ customer.email }}" data-label="Pay with card" data-name="Arts Musants"
+                    data-description="Widget" data-image="{{ asset('images/logo.jpg') }}" data-locale="auto"
+                    data-currency="eur">
+                </script>
+            </form>
         </section>
-        <form action="{{ path('sales_stripe') }}" method="POST">
-            <input type="hidden" name="painting_id" value="{{ painting.id }}"></input>
-            <input type="hidden" name="customer_id" value="{{ customer.id }}"></input>
-            <input type="hidden" name="sale_id" value="{{ sale_id }}"></input>
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_Nz5gM2tOvhHk9cvWnxBgMBSD00b8efpS3c" 
-                data-amount="{{ painting.price *100 }}"
-                data-email="{{ customer.email }}" 
-                data-label="Pay with card" 
-                data-name="Arts Musants"
-                data-description="Widget" 
-                data-image="{{ asset('images/logo.jpg') }}" 
-                data-locale="auto"
-                data-currency="eur">
-            </script>
-        </form>
     </div>
 </div>
 </div>
