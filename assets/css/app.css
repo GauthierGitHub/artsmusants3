@@ -23,9 +23,31 @@ h2 {
     position: relative;
 }
 
-h1, h2, h3, h4, p, a {
+h1,
+h2,
+h3,
+h4,
+p,
+a {
     position: relative;
 }
+
+/*BOOTSTRAP CLASS*/
+
+.jumbotron {
+    padding: 2rem 1rem;
+}
+
+/*PICTURES ANIMATIONS*/
+
+a img {
+    transition: transform 3s; /* Animation */
+}
+
+a img:hover {
+    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
 
 /*FORMS*/
 
@@ -52,7 +74,7 @@ textarea {
     background-color: gray;
 }
 
-form button{
+form button {
     margin: 0 50%;
 }
 
@@ -60,7 +82,7 @@ form button{
     float: right;
 }
 
-#stripe button{
+#stripe button {
     margin: 0;
 }
 

@@ -83,31 +83,40 @@ class OrdersController extends AbstractController
     /**
      * @Route("/{painting_id}/buy", name="sale", methods={"GET","POST"})
      */
-    public function sale(Request $request, $painting_id, PaintingsRepository $paintingsRepository): Response
+    public function sale(Request $request, $painting_id, PaintingsRepository $paintingsRepository, SalesRepository $salesRepository): Response
     {
         //customer is recording but sale is canceled if payment is not accepted
         $painting = $paintingsRepository->find($painting_id);
 
-        $customer = new Customers();
+        //check if painting is already sale
+        $painting_id = $painting->getId();
+        $painting_saled = $salesRepository->findBy(['painting' => $painting_id]);
 
-        $form = $this->createForm(CustomersType::class, $customer);
-        $form->handleRequest($request);
+        if (!empty($painting_saled)) {
+            return $this->render('orders/notavaible.html.twig');
+        } else {
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($customer);
-            $entityManager->flush();
+            $customer = new Customers();
 
-            return $this->forward('App\Controller\SalesController::checkout', [
-                'customer' => $customer,
+            $form = $this->createForm(CustomersType::class, $customer);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($customer);
+                $entityManager->flush();
+
+                return $this->forward('App\Controller\SalesController::checkout', [
+                    'customer' => $customer,
+                    'painting' => $painting,
+                ]);
+            }
+
+            return $this->render('orders/sale.html.twig', [
                 'painting' => $painting,
+                'form' => $form->createView(),
             ]);
         }
-
-        return $this->render('orders/sale.html.twig', [
-            'painting' => $painting,
-            'form' => $form->createView(),
-        ]);
     }
 
 
@@ -126,7 +135,7 @@ class OrdersController extends AbstractController
         try {
             \Stripe\Stripe::setApiKey('sk_test_7DkjJe8fFYBFUt9hAdc7JqAN00V29BgrCg');
             $charge = \Stripe\Charge::create([
-                'amount' => $painting->getPrice() * 100,//amout in cents
+                'amount' => $painting->getPrice() * 100, //amout in cents
                 'currency' => 'eur',
                 'source' => $_POST['stripeToken'],
                 'statement_descriptor' => 'artsmusants',
