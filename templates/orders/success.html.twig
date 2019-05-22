@@ -3,5 +3,11 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<h2>Success !</h2>
+<div class="text-center mt-4">
+    <h3>Thanks for {{ action }} {{ name }} !</h3>
+
+    <p>You're successfully {{ action }} {{ painting }} at Arts Musants ! </p>
+    <p>A confirmation email has been sent to you at {{ email }} !</p>
+    <a href="{{ path('home') }}">Back to home</a>
+</div>
 {% endblock %}

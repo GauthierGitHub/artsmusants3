@@ -12,7 +12,7 @@ nav {
     z-index: 1;
 }
 
-main *{
+main * {
     margin: 5px auto;
 }
 
@@ -23,14 +23,45 @@ h2 {
     position: relative;
 }
 
+h1, h2, h3, h4, p, a {
+    position: relative;
+}
+
 /*FORMS*/
 
 form input {
     color: black;
+    width: 60%;
+    margin-right: 2%
+}
+
+form label {
+    width: 30%;
+    text-align: center;
 }
 
 textarea {
     color: black;
+    width: 60%;
+    margin-right: 2%
+}
+
+.btn {
+    color: white;
+    border: solid white 2px;
+    background-color: gray;
+}
+
+form button{
+    margin: 0 50%;
+}
+
+#stripe {
+    float: right;
+}
+
+#stripe button{
+    margin: 0;
 }
 
 /*TABLES*/

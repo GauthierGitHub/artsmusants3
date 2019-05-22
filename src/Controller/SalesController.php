@@ -111,13 +111,17 @@ class SalesController extends AbstractController
             ->setCanceled(true);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($sale);
-        $entityManager->flush();
+        try {
+            $entityManager->flush();
 
-        return $this->render('orders/checkout.html.twig', [
-            'painting' => $painting,
-            'customer' => $customer,
-            'sale_id' => $sale->getId(),
-        ]);
+            return $this->render('orders/checkout.html.twig', [
+                'painting' => $painting,
+                'customer' => $customer,
+                'sale_id' => $sale->getId(),
+            ]);
+        } catch (\Doctrine\DBAL\DBALException $error) {
+            return $this->render('orders/notavaible.html.twig');
+        }
     }
 
     /**
@@ -135,7 +139,7 @@ class SalesController extends AbstractController
         try {
             \Stripe\Stripe::setApiKey('sk_test_7DkjJe8fFYBFUt9hAdc7JqAN00V29BgrCg');
             $charge = \Stripe\Charge::create([
-                'amount' => $painting->getPrice() * 100,//amout in cents
+                'amount' => $painting->getPrice() * 100, //amout in cents
                 'currency' => 'eur',
                 'source' => $_POST['stripeToken'],
                 'statement_descriptor' => 'artsmusants',
@@ -166,8 +170,10 @@ class SalesController extends AbstractController
             $entityManager->flush();
 
             return $this->render('orders/success.html.twig', [
-                'painting' => $painting,
-                'customer' => $customer,
+                'painting' => $painting->getTitle(),
+                'customer' => $customer->getFirstname(),
+                'email' => $customer->getEmail(),
+                'action' => 'sale',
             ]);
         } catch (Exception $error) {
 

@@ -9,8 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Proxies\__CG__\App\Entity\Paintings;
-use Proxies\__CG__\App\Entity\Customers;
 
 /**
  * @Route("admin/bookings")
@@ -125,15 +123,23 @@ class BookingsController extends AbstractController
                 $this->renderView(
                     // templates/emails/registration.html.twig
                     'emails.html.twig',
-                    ['name' => $customer->getFirstName(),
-                    'painting' => $painting->getTitle(),
-                    'action' => 'booking',
+                    [
+                        'name' => $customer->getFirstName(),
+                        'painting' => $painting->getTitle(),
+                        'action' => 'booking',
                     ]
                 ),
                 'text/html'
             );
         $mailer->send($message);
 
-        return $this->redirectToRoute('home');
+        return $this->forward('App\Controller\OrdersController::success',
+            [
+                'name' => $customer->getFirstName(),
+                'painting' => $painting->getTitle(),
+                'email' => $customer->getEmail(),
+                'action' => 'booking',
+            ]
+        );
     }
 }
