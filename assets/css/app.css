@@ -42,7 +42,7 @@ a {
     padding: 2rem 1rem;
 }
 
-/*PICTURES ANIMATIONS*/
+/*PICTURES & ANIMATIONS*/
 
 
 #BlancDeBlancCarousel:hover>a,
@@ -61,6 +61,10 @@ a img:hover {
     /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
+#painting_show {
+    display: block;
+    margin: 10px auto;
+}
 
 /*FORMS*/
 

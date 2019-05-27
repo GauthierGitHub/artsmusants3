@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Paintings</h1>
 
-    <img src="{{ asset('uploads/pictures/' ~ painting.picture) }}" alt="{{ painting.title }}">
+    <img id="painting_show" src="{{ asset('uploads/pictures/' ~ painting.picture) }}" alt="{{ painting.title }}">
 
     <table class="table">
 
