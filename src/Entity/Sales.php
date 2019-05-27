@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Sales
  *
- * @ORM\Table(name="sales", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_6B817044B00EB939", columns={"painting_id"})}, indexes={@ORM\Index(name="IDX_6B8170449395C3F3", columns={"customer_id"})})
+ * @ORM\Table(name="sales", indexes={@ORM\Index(name="IDX_6B8170449395C3F3", columns={"customer_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\SalesRepository")
  */
 class Sales

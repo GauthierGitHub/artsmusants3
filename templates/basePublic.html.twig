@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <link rel="icon" type="image/png" href="{{ asset('images/logo.jpg') }}" />
+    <link rel="icon" type="image/png" href="{{ asset('build/images/logo.jpg') }}" />
     <title>
         {% block title %}Arts Musants
         {% endblock %}
@@ -22,7 +22,9 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark 
+    {% if current_menu is defined and current_menu == 'home'%} hidden {% endif %}">
         <a class="navbar-brand" href="{{ path('home')}}">Arts Musants</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,15 +34,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link{% if current_menu is defined and current_menu == 'blancdeblanc'%} active{% endif %}"
+                    <a class="nav-link
+                    {% if current_menu is defined and current_menu == 'blancdeblanc'%} active{% endif %}"
                         href="{{path('blancdeblanc')}}">Blanc de blanc</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link{% if current_menu is defined and current_menu == 'couleursetmatieres'%} active{% endif %}"
+                    <a class="nav-link
+                    {% if current_menu is defined and current_menu == 'couleursetmatieres'%} active{% endif %}"
                         href="{{path('couleursetmatieres')}}">Couleurs &amp; Matières</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link{% if current_menu is defined and current_menu == 'whitespirit'%} active{% endif %}"
+                    <a class="nav-link
+                    {% if current_menu is defined and current_menu == 'whitespirit'%} active{% endif %}"
                         href="{{path('whitespirit')}}">White Spirit</a>
                 </li>
             </ul>

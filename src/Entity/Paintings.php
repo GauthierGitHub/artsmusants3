@@ -14,7 +14,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Paintings
 {
-    public function __toString() {
+    public function __toString()
+    {
         return $this->title;
     }
     /**
@@ -73,7 +74,7 @@ class Paintings
      *
      * @ORM\ManyToOne(targetEntity="Categories")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     *  @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * })
      */
     private $category;
@@ -187,5 +188,4 @@ class Paintings
 
         return $this;
     }
-
 }

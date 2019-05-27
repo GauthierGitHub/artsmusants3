@@ -104,7 +104,7 @@ class SalesController extends AbstractController
     {
         //check if painting is already sale
         $painting_id = $painting->getId();
-        $painting_saled = $salesRepository->findBy(['painting' => $painting_id]);
+        $painting_saled = $salesRepository->findBy(['painting' => $painting_id, 'canceled' => 0]);
 
         if (!empty($painting_saled)) {
             return $this->render('orders/notavaible.html.twig');
@@ -117,6 +117,7 @@ class SalesController extends AbstractController
                 ->setCanceled(true);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($sale);
+            $entityManager->flush();
             try {
                 $entityManager->flush();
 
@@ -128,63 +129,6 @@ class SalesController extends AbstractController
             } catch (\Doctrine\DBAL\DBALException $error) {
                 return $this->render('orders/notavaible.html.twig');
             }
-        }
-    }
-
-    /**
-     * @Route("/stripe", name="sales_stripe", methods={"POST"})
-     */
-    public function stripe(\Swift_Mailer $mailer, PaintingsRepository $paintingsRepository, CustomersRepository $customersRepository, SalesRepository $salesRepository): Response
-    {
-
-        $painting = $paintingsRepository->find($_POST['painting_id']);
-        $customer = $customersRepository->find($_POST['customer_id']);
-        $sale = $salesRepository->find($_POST['sale_id']);
-
-        // Set your secret key: remember to change this to your live secret key in production
-        // See your keys here: https://dashboard.stripe.com/account/apikeys
-        try {
-            \Stripe\Stripe::setApiKey('sk_test_7DkjJe8fFYBFUt9hAdc7JqAN00V29BgrCg');
-            $charge = \Stripe\Charge::create([
-                'amount' => $painting->getPrice() * 100, //amout in cents
-                'currency' => 'eur',
-                'source' => $_POST['stripeToken'],
-                'statement_descriptor' => 'artsmusants',
-                'receipt_email' => $customer->getEmail(),
-            ]);
-
-            //confirmation mail
-            $message = (new \Swift_Message('Arts Musants - Booking'))
-                ->setFrom('artsmusants.com@gmail.com')
-                ->setTo($customer->getEmail())
-                ->setBody(
-                    $this->renderView(
-                        // templates/emails/registration.html.twig
-                        'emails.html.twig',
-                        [
-                            'name' => $customer->getFirstName(),
-                            'painting' => $painting->getTitle(),
-                            'action' => 'buy',
-                        ]
-                    ),
-                    'text/html'
-                );
-            $mailer->send($message);
-
-            $sale->setCanceled(false);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($sale);
-            $entityManager->flush();
-
-            return $this->render('orders/success.html.twig', [
-                'painting' => $painting->getTitle(),
-                'customer' => $customer->getFirstname(),
-                'email' => $customer->getEmail(),
-                'action' => 'sale',
-            ]);
-        } catch (Exception $error) {
-
-            return $this->render('orders/error.html.twig');
         }
     }
 }

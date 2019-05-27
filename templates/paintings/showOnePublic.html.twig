@@ -6,12 +6,11 @@
 <div class="row">
     <h2 class="col-12 mt-4">{{ painting.title }}</h2>
     <div class="col-12 text-center">
-        <a href="{{ path('book', { 'painting_id': painting.id})  }}">Book</a>
         <a href="{{ path('sale', { 'painting_id': painting.id}) }}">Buy</a>
     </div>
     <img class="col-6 mt-4 mx-auto" src="{{ asset('uploads/pictures/' ~ painting.picture) }}"
         alt="{{ painting.title }}">
-    <p class="col-12 text-center">{{ painting.height }} x {{ painting.width }} cm</p>
+    <p class="col-12 text-center">{{ painting.height }}cm x {{ painting.width }}cm</p>
     <p class="col-12 text-center">{{ painting.year }}</p>
     <p class="col-12 text-center">{{ painting.description }}</p>
 

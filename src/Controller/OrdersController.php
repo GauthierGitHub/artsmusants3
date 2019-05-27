@@ -38,7 +38,6 @@ class OrdersController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/error", name="error")
      */
@@ -52,32 +51,39 @@ class OrdersController extends AbstractController
     /**
      * @Route("/{painting_id}/booking", name="book", methods={"GET","POST"})
      */
-    public function book(Request $request, $painting_id, PaintingsRepository $paintingsRepository): Response
+    public function book(Request $request, $painting_id, PaintingsRepository $paintingsRepository, SalesRepository $salesRepository): Response
     {
-        $painting = $paintingsRepository->find($painting_id);
+        //check if painting is already sale
+        $painting_saled = $salesRepository->findBy(['painting' => $painting_id]);
 
-        $customer = new Customers();
+        if (!empty($painting_saled)) {
+            return $this->render('orders/notavaible.html.twig');
+        } else {
+            $painting = $paintingsRepository->find($painting_id);
 
-        $form = $this->createForm(CustomersType::class, $customer);
-        $form->handleRequest($request);
+            $customer = new Customers();
 
-        if ($form->isSubmitted() && $form->isValid()) {
+            $form = $this->createForm(CustomersType::class, $customer);
+            $form->handleRequest($request);
 
-            $entityManager = $this->getDoctrine()->getManager();
+            if ($form->isSubmitted() && $form->isValid()) {
 
-            $entityManager->persist($customer);
-            $entityManager->flush();
+                $entityManager = $this->getDoctrine()->getManager();
 
-            return $this->forward('App\Controller\BookingsController::bookingsPublic_new', [
-                'customer' => $customer,
+                $entityManager->persist($customer);
+                $entityManager->flush();
+
+                return $this->forward('App\Controller\BookingsController::bookingsPublic_new', [
+                    'customer' => $customer,
+                    'painting' => $painting,
+                ]);
+            }
+
+            return $this->render('orders/book.html.twig', [
                 'painting' => $painting,
+                'form' => $form->createView(),
             ]);
         }
-
-        return $this->render('orders/book.html.twig', [
-            'painting' => $painting,
-            'form' => $form->createView(),
-        ]);
     }
 
     /**
@@ -88,9 +94,9 @@ class OrdersController extends AbstractController
         //customer is recording but sale is canceled if payment is not accepted
         $painting = $paintingsRepository->find($painting_id);
 
-        //check if painting is already sale
+        //check if painting is already sale and sale is not canceled
         $painting_id = $painting->getId();
-        $painting_saled = $salesRepository->findBy(['painting' => $painting_id]);
+        $painting_saled = $salesRepository->findBy(['painting' => $painting_id, 'canceled' => 0]);
 
         if (!empty($painting_saled)) {
             return $this->render('orders/notavaible.html.twig');
@@ -125,7 +131,6 @@ class OrdersController extends AbstractController
      */
     public function stripe(\Swift_Mailer $mailer, PaintingsRepository $paintingsRepository, CustomersRepository $customersRepository, SalesRepository $salesRepository): Response
     {
-
         $painting = $paintingsRepository->find($_POST['painting_id']);
         $customer = $customersRepository->find($_POST['customer_id']);
         $sale = $salesRepository->find($_POST['sale_id']);
@@ -148,11 +153,11 @@ class OrdersController extends AbstractController
                 ->setTo($customer->getEmail())
                 ->setBody(
                     $this->renderView(
-                        // templates/emails/registration.html.twig
                         'emails.html.twig',
                         [
                             'name' => $customer->getFirstName(),
                             'painting' => $painting->getTitle(),
+                            'price' => $painting->getPrice(),
                             'action' => 'buy',
                         ]
                     ),
@@ -167,7 +172,7 @@ class OrdersController extends AbstractController
 
             return $this->render('orders/success.html.twig', [
                 'painting' => $painting->getTitle(),
-                'customer' => $customer->getFirstname(),
+                'name' => $customer->getFirstname(),
                 'email' => $customer->getEmail(),
                 'action' => 'sale',
             ]);

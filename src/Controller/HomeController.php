@@ -19,9 +19,6 @@ class HomeController extends AbstractController
             'paintingsBlancDeBlanc' => $paintingsRepository->findSquareFormat(1),
             'paintingsCouleursEtMatieres' => $paintingsRepository->findSquareFormat(2),
             'paintingsWhiteSpirit' => $paintingsRepository->findSquareFormat(3),
-/*
-            'paintingsBlancDeBlanc' => $paintingsRepository->findBy(['category' => 1], null, 5),
-*/
         ]);
     }
 }
