@@ -11,7 +11,9 @@
                 <th>Id</th>
                 <th>Date</th>
                 <th>Canceled</th>
-                <th>actions</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +22,10 @@
                 <td>{{ sale.id }}</td>
                 <td>{{ sale.date ? sale.date|date('Y-m-d') : '' }}</td>
                 <td>{{ sale.canceled ? 'Yes' : 'No' }}</td>
+                <td>{{ sale.painting}}</td>
+                <td>{{ sale.customer.firstname}}</td>
+                <td>{{ sale.customer.lastname}}</td>
+                <td>{{ sale.customer.email}}</td>
                 <td>
                     <a href="{{ path('sales_show', {'id': sale.id}) }}">show</a>
                     <a href="{{ path('sales_edit', {'id': sale.id}) }}">edit</a>

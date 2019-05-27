@@ -19,6 +19,24 @@
                 <th>Canceled</th>
                 <td>{{ sale.canceled ? 'Yes' : 'No' }}</td>
             </tr>
+            <tr>
+                <th>Painting title</th>
+                <td>{{ sale.painting}}</td>
+            </tr>
+            <tr>
+                <th>Customer</th>
+                <td>{{ sale.customer.firstname}}
+                    <br>{{ sale.customer.lastname}}
+                    <br>{{ sale.customer.email}}
+                    <br>{{ sale.customer.address}}
+                    <br>{{ sale.customer.postalcode}}
+                    <br>{{ sale.customer.city}}
+                </td>
+            </tr>
+            <tr>
+                <th>Painting price</th>
+                <td>{{ sale.painting.price}}€</td>
+            </tr>
         </tbody>
     </table>
 

@@ -157,6 +157,7 @@ class OrdersController extends AbstractController
                         [
                             'name' => $customer->getFirstName(),
                             'painting' => $painting->getTitle(),
+                            'price' => $painting->getPrice(),
                             'action' => 'buy',
                         ]
                     ),

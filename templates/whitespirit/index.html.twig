@@ -18,8 +18,8 @@
                 <img class="col-12" src="{{ asset('uploads/pictures/' ~ painting.picture) }}" alt="{{ painting.title }}">
             </a>
             <p class="text-center">{{ painting.title }}</p>
-            <p class="text-center">{{ painting.height }} x {{ painting.width }}</p>
-        </div>@ORM\UniqueConstraint(name="UNIQ_6B817044B00EB939", columns={"painting_id"})}, 
+            <p class="text-center">{{ painting.height }}cm x {{ painting.width }}cm</p>
+        </div>
 
         {% endfor %}
 
