@@ -32,6 +32,10 @@ a {
     position: relative;
 }
 
+.hidden {
+    display: none;
+}
+
 /*BOOTSTRAP CLASS*/
 
 .jumbotron {
@@ -48,11 +52,13 @@ a {
 }
 
 a img {
-    transition: transform 3s; /* Animation */
+    transition: transform 3s;
+    /* Animation */
 }
 
 a img:hover {
-    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.2);
+    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 
@@ -60,6 +66,7 @@ a img:hover {
 
 form input {
     color: black;
+    font-family: arial;
     width: 60%;
     margin-right: 2%
 }
@@ -86,11 +93,16 @@ form button {
 }
 
 #stripe {
-    float: right;
+    margin: 0 10%;
 }
 
 #stripe button {
     margin: 0;
+}
+
+#paintings_category {
+    width: 60%;
+    color: black;
 }
 
 /*TABLES*/

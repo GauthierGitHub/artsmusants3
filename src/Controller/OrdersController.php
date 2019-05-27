@@ -38,7 +38,6 @@ class OrdersController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/error", name="error")
      */
@@ -95,9 +94,9 @@ class OrdersController extends AbstractController
         //customer is recording but sale is canceled if payment is not accepted
         $painting = $paintingsRepository->find($painting_id);
 
-        //check if painting is already sale
+        //check if painting is already sale and sale is not canceled
         $painting_id = $painting->getId();
-        $painting_saled = $salesRepository->findBy(['painting' => $painting_id]);
+        $painting_saled = $salesRepository->findBy(['painting' => $painting_id, 'canceled' => 0]);
 
         if (!empty($painting_saled)) {
             return $this->render('orders/notavaible.html.twig');
@@ -132,7 +131,6 @@ class OrdersController extends AbstractController
      */
     public function stripe(\Swift_Mailer $mailer, PaintingsRepository $paintingsRepository, CustomersRepository $customersRepository, SalesRepository $salesRepository): Response
     {
-
         $painting = $paintingsRepository->find($_POST['painting_id']);
         $customer = $customersRepository->find($_POST['customer_id']);
         $sale = $salesRepository->find($_POST['sale_id']);
@@ -155,7 +153,6 @@ class OrdersController extends AbstractController
                 ->setTo($customer->getEmail())
                 ->setBody(
                     $this->renderView(
-                        // templates/emails/registration.html.twig
                         'emails.html.twig',
                         [
                             'name' => $customer->getFirstName(),

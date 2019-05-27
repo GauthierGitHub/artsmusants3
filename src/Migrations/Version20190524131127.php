@@ -7,12 +7,10 @@ namespace DoctrineMigrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-//first version of this migration was blocked. cut in two migration with Version20190509040339.php
-
 /**
- * Auto-generated Migration: Please modify to your needs!in
+ * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190509035903 extends AbstractMigration
+final class Version20190524131127 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -24,7 +22,7 @@ final class Version20190509035903 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP INDEX UNIQ_62534E21E7927C74 ON customers');
+        $this->addSql('ALTER TABLE sales DROP INDEX UNIQ_6B817044B00EB939, ADD INDEX IDX_6B817044B00EB939 (painting_id)');
     }
 
     public function down(Schema $schema) : void
@@ -32,6 +30,6 @@ final class Version20190509035903 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_62534E21E7927C74 ON customers (email)');
+        $this->addSql('ALTER TABLE sales DROP INDEX IDX_6B817044B00EB939, ADD UNIQUE INDEX UNIQ_6B817044B00EB939 (painting_id)');
     }
 }

@@ -14,17 +14,18 @@ class PaintingsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('title')
+            ->add('category')
             ->add('height')
             ->add('width')
             ->add('year')
             ->add('description')
             ->add('price')
-            ->add('title')
-            ->add('category')
-            ->add('picture', FileType::class, ['label' => 'Picture (jpg file)',
-            //required for edit painting
-            'data_class' => null])
-        ;
+            ->add('picture', FileType::class, [
+                'label' => 'Picture (jpg file)',
+                //required for edit painting
+                'data_class' => null
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

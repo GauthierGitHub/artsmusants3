@@ -13,10 +13,12 @@
 
         {% for painting in paintingsCouleursEtMatieres %}
 
-        <div class="col-12 col-sm-4 mt-4">
-            <a href="{{ asset('uploads/pictures/' ~ painting.picture) }}">
-                <img src="{{ asset('uploads/pictures/' ~ painting.picture) }}" alt="{{ painting.title }}">
+        <div class="col-9 col-sm-4 align-self-center">
+            <a href="{{ path('paintings_showOnePublic', {'id': painting.id}) }}">
+                <img class="col-12" src="{{ asset('uploads/pictures/' ~ painting.picture) }}" alt="{{ painting.title }}">
             </a>
+            <p class="text-center">{{ painting.title }}</p>
+            <p class="text-center">{{ painting.height }} x {{ painting.width }}</p>
         </div>
 
         {% endfor %}

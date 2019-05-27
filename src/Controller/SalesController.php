@@ -104,7 +104,7 @@ class SalesController extends AbstractController
     {
         //check if painting is already sale
         $painting_id = $painting->getId();
-        $painting_saled = $salesRepository->findBy(['painting' => $painting_id]);
+        $painting_saled = $salesRepository->findBy(['painting' => $painting_id, 'canceled' => 0]);
 
         if (!empty($painting_saled)) {
             return $this->render('orders/notavaible.html.twig');
@@ -117,6 +117,7 @@ class SalesController extends AbstractController
                 ->setCanceled(true);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($sale);
+            $entityManager->flush();
             try {
                 $entityManager->flush();
 

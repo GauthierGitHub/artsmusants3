@@ -22,7 +22,7 @@ class PaintingsRepository extends ServiceEntityRepository
     /**
     * @return Paintings[] Returns an array of Paintings objects
     */
-    public function findSquareFormat(number $category)
+    public function findSquareFormat($category)
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.height/p.width = 1')
