@@ -24,6 +24,9 @@ CONFIGURATION:
         all folder must be in assets folder
         yarn encore dev
         see result in public/build
+    Paginator
+        https://github.com/KnpLabs/KnpPaginatorBundle
+        composer require knplabs/knp-paginator-bundle
 
 SERVER (localhost:8000):
 

@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Paintings
  *
- * @ORM\Table(name="paintings", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_CDBED5082B36786B", columns={"title"})}, indexes={@ORM\Index(name="IDX_CDBED50812469DE2", columns={"category_id"})})
+ * @ORM\Table(indexes={@ORM\Index(name="IDX_CDBED50812469DE2", columns={"category_id"})})
  * @ORM\Entity(repositoryClass="App\Repository\PaintingsRepository")
  */
 class Paintings

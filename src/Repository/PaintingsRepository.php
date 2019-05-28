@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Paintings;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\Query;
 
 /**
  * @method Paintings|null find($id, $lockMode = null, $lockVersion = null)
@@ -20,20 +21,32 @@ class PaintingsRepository extends ServiceEntityRepository
     }
 
     /**
-    * @return Paintings[] Returns an array of Paintings objects
-    */
+     * @return Paintings[] Returns an array of Paintings objects
+     */
     public function findSquareFormat($category)
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.height/p.width = 1')
-            ->andWhere('p.category = '.$category)
+            ->andWhere('p.category = ' . $category)
             ->orderBy('p.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    
+
+    /**
+     * @return Query
+     */
+    public function findCatQuery($category): Query
+    {
+        // paginator : https://github.com/KnpLabs/KnpPaginatorBundle
+
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.category = ' . $category)
+            ->orderBy('p.id', 'ASC')
+            ->getQuery();
+    }
+
 
     // /**
     //  * @return Paintings[] Returns an array of Paintings objects
