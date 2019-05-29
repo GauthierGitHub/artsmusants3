@@ -15,6 +15,8 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "jquery-bridget": "^2.0.1",
+        "masonry-layout": "^4.2.2",
         "tar": "^4.4.8"
     }
 }

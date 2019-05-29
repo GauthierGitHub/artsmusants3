@@ -57,13 +57,45 @@ a img {
 }
 
 a img:hover {
-    transform: scale(1.2);
-    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.1);
+    /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.paintingimage a {
+    color: white;
+    text-decoration: none;
+}
+
+.paintingimage a p {
+    position: relative;
+    z-index: 1;
+    transform: translateY(-100%);
+    display: none;
 }
 
 #painting_show {
     display: block;
     margin: 10px auto;
+}
+
+.paintingimage:hover .showonhover {
+    display: block;
+}
+
+.showonhover {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.377);
+    transform: translateY(-100%);
+    text-shadow: 2px 2px 2px #000;
+    /*http://www.debray-jerome.fr/outils/Generateur-de-box-shadow-css3.html*/
+    -moz-box-shadow: 0px 0px 5px 5px #656565;
+    -webkit-box-shadow: 0px 0px 5px 5px #656565;
+    -o-box-shadow: 0px 0px 5px 5px #656565;
+    box-shadow: 0px 0px 5px 5px #656565;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=5);
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
 }
 
 /*FORMS*/
@@ -114,12 +146,12 @@ form button {
     text-align: center;
 }
 
-#login_form input{
+#login_form input {
     width: 50%;
     margin: 0 auto;
 }
 
-#login_form .btn{
+#login_form .btn {
     margin: 0 auto;
 }
 
@@ -136,4 +168,12 @@ table {
 
 td {
     max-width: 30%;
+}
+
+/*RESPONSIVE*/
+
+@media screen and (max-width: 576px) {
+    .paintingimage {
+        margin: 5px 12.5%;
+    }
 }

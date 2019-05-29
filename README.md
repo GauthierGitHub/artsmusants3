@@ -27,6 +27,10 @@ CONFIGURATION:
     Paginator
         https://github.com/KnpLabs/KnpPaginatorBundle
         composer require knplabs/knp-paginator-bundle
+    Masonry
+        npm install masonry-layout
+        npm install jquery-bridget
+        https://masonry.desandro.com/extras.html#bootstrap
 
 SERVER (localhost:8000):
 

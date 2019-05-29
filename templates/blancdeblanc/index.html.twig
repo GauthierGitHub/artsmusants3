@@ -9,29 +9,30 @@
 </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row grid">
 
         {% for painting in pagination %}
 
-        <div class="col-9 col-sm-4 float align-self-center 
-        {% if painting.width >= painting.height * 1.5 %}col-sm-8{% endif %}">
+        <div class="paintingimage col-9 col-sm-4 align-self-center {% if painting.width >= painting.height * 1.5 %}col-sm-8{% endif %}
+
+            {% if painting.height > 30 %}col-sm-8{% endif %}">
 
             <a href="{{ path('paintings_showOnePublic', {'id': painting.id}) }}">
-                <img class="col-12" src="{{ asset('uploads/pictures/' ~ painting.picture) }}" alt="{{ painting.title }}">
+                <img class="col-12" src="{{ asset('uploads/pictures/' ~ painting.picture)}}" alt="{{ painting.title }}">
+                <p class="text-center showonhover">
+                    {{ painting.title }} <br> {{ painting.height }}cm x {{ painting.width }}cm
+                </p>
             </a>
-            <p class="text-center">{{ painting.title }}</p>
-            <p class="text-center">{{ painting.height }}cm x {{ painting.width }}cm</p>
-            
         </div>
 
         {% endfor %}
-
+        {# paginator display navigation #}
+        <div class="navigation col-12">
+            <div class="col-3">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
     </div>
-</div>
-
-{# paginator display navigation #}
-<div class="navigation col-4">
-    {{ knp_pagination_render(pagination) }}
 </div>
 
 {% endblock %}

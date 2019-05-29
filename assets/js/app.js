@@ -9,7 +9,30 @@
 require('../css/app.css');
 require('../css/pagetransitions.css');
 require('../scss/app.scss');
-require('../js/background.js');
+require('../js/imageanimation');
+
+var Masonry = require('masonry-layout');
+
+var msnry = new Masonry( '.grid', {
+  // options...
+});
+var $ = require('jquery');
+var jQueryBridget = require('jquery-bridget');
+var Masonry = require('masonry-layout');
+// make Masonry a jQuery plugin
+jQueryBridget( 'masonry', Masonry, $ );
+// now you can use $().masonry()
+/*
+$('.grid').masonry({
+  columnWidth: 80
+});
+*/
+$('.grid').masonry({
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+    percentPosition: true
+  });
+
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // const $ = require('jquery');
