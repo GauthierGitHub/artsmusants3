@@ -165,6 +165,24 @@ class OrdersController extends AbstractController
                 );
             $mailer->send($message);
 
+            //admin mail
+            $message = (new \Swift_Message('Arts Musants - Booking'))
+                ->setFrom('artsmusants.com@gmail.com')
+                ->setTo('artsmusants.com@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'emailsAdmin.html.twig',
+                        [
+                            'name' => $customer->getFirstName(),
+                            'painting' => $painting->getTitle(),
+                            'price' => $painting->getPrice(),
+                            'action' => 'buy',
+                        ]
+                    ),
+                    'text/html'
+                );
+            $mailer->send($message);
+
             $sale->setCanceled(false);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($sale);

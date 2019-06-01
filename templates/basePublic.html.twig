@@ -48,6 +48,11 @@
                     {% if current_menu is defined and current_menu == 'whitespirit'%} active{% endif %}"
                         href="{{path('whitespirit')}}">White Spirit</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link
+                    {% if current_menu is defined and current_menu == 'artisticApproach'%} active{% endif %}"
+                        href="{{path('artisticApproach')}}">Artistic approach</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -61,6 +66,8 @@
     <main>
         {% block body %}{% endblock %}
     </main>
+
+    {{ include('footer.html.twig') }}
 
     {% block javascripts %}
     <script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

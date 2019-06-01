@@ -13,26 +13,30 @@ require('../js/imageanimation');
 
 var Masonry = require('masonry-layout');
 
-var msnry = new Masonry( '.grid', {
+var msnry = new Masonry('.grid', {
   // options...
 });
 var $ = require('jquery');
 var jQueryBridget = require('jquery-bridget');
 var Masonry = require('masonry-layout');
 // make Masonry a jQuery plugin
-jQueryBridget( 'masonry', Masonry, $ );
+jQueryBridget('masonry', Masonry, $);
 // now you can use $().masonry()
-/*
+/* basic use
 $('.grid').masonry({
   columnWidth: 80
 });
 */
-$('.grid').masonry({
+//conflict with footer
+//https://stackoverflow.com/questions/45727096/masonry-grid-overlapping-footer-content
+var $container = $('#masonry-grid');
+$container.imagesLoaded(function () {
+  $('.grid').masonry({
     itemSelector: '.grid-item',
     columnWidth: '.grid-sizer',
     percentPosition: true
   });
-
+});
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // const $ = require('jquery');

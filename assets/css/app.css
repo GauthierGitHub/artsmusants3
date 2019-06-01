@@ -8,12 +8,27 @@
 nav {
     background-image: url('../images/bg-nav.png');
     background-size: cover;
-    text-shadow: 2px 2px rgb(77, 75, 75);
+    /*text-shadow: 2px 2px rgb(77, 75, 75);*/
     z-index: 1;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
 }
 
 main * {
     margin: 5px auto;
+}
+
+footer {
+    bottom: 0;
+}
+
+footer * {
+    color: grey;
+    font-size: 75%;
 }
 
 h1,
@@ -32,18 +47,40 @@ a {
     position: relative;
 }
 
+a {
+    outline-style: none;
+}
+
 .hidden {
     display: none;
 }
+
 
 /*BOOTSTRAP CLASS*/
 
 .jumbotron {
     padding: 2rem 1rem;
+    background-color: transparent;
+}
+
+
+/*artisticApproach & cgv*/
+
+#artisticApproach {
+    width: 75%;
+    text-align: center;
+    margin: 10px 10%;
+    padding: 10px 10px;
+}
+
+#cgv {
+    width: 75%;
+    text-align: center;
+    margin: 10px 10%;
+    padding: 10px 10px;
 }
 
 /*PICTURES & ANIMATIONS*/
-
 
 #BlancDeBlancCarousel:hover>a,
 #CouleursEtMatieresCarousel:hover>a,
@@ -92,11 +129,12 @@ a img:hover {
     -webkit-box-shadow: 0px 0px 5px 5px #656565;
     -o-box-shadow: 0px 0px 5px 5px #656565;
     box-shadow: 0px 0px 5px 5px #656565;
-    filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=5);
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=5);
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
     border-radius: 100px;
 }
+
 
 /*FORMS*/
 
@@ -160,6 +198,7 @@ form button {
     width: 50%;
 }
 
+
 /*TABLES*/
 
 table {
@@ -169,6 +208,7 @@ table {
 td {
     max-width: 30%;
 }
+
 
 /*RESPONSIVE*/
 

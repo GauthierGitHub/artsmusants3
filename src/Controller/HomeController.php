@@ -35,4 +35,23 @@ class HomeController extends AbstractController
             'painting' => $painting,
         ]);
     }
+
+    /**
+     * @Route("/artisticApproach", name="artisticApproach")
+     */
+    public function artisticApproach(): Response
+    {
+        return $this->render('home/artisticApproach.html.twig', [
+            'current_menu' => 'artisticApproach',
+        ]);
+    }
+
+    /**
+     * @Route("/cgv", name="cgv")
+     */
+    public function cgv(): Response
+    {
+        return $this->render('home/cgv.html.twig', [
+        ]);
+    }
 }

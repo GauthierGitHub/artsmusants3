@@ -31,6 +31,8 @@ CONFIGURATION:
         npm install masonry-layout
         npm install jquery-bridget
         https://masonry.desandro.com/extras.html#bootstrap
+    Translator v4.2.7
+         composer require symfony/translation 
 
 SERVER (localhost:8000):
 
