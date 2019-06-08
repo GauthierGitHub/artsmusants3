@@ -5,7 +5,9 @@
 {% block body %}
     <h1>Paintings index</h1>
 
-    <table class="table">
+    <a class="ml-4" href="{{ path('paintings_new') }}">New painting</a>
+
+    <table class="table mt-4">
         <thead>
             <tr>
                 <th>Id</th>
@@ -46,5 +48,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('paintings_new') }}">New painting</a>
+
 {% endblock %}

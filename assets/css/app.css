@@ -8,12 +8,27 @@
 nav {
     background-image: url('../images/bg-nav.png');
     background-size: cover;
-    text-shadow: 2px 2px rgb(77, 75, 75);
+    /*text-shadow: 2px 2px rgb(77, 75, 75);*/
     z-index: 1;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
 }
 
 main * {
     margin: 5px auto;
+}
+
+footer {
+    bottom: 0;
+}
+
+footer * {
+    color: grey;
+    font-size: 75%;
 }
 
 h1,
@@ -32,18 +47,76 @@ a {
     position: relative;
 }
 
+a {
+    outline-style: none;
+}
+
 .hidden {
     display: none;
 }
+
+
+/*LANGUAGE PICKER*/
+
+
+.languagepicker {
+	background-color: transparent;
+	display: inline-block;
+	padding: 0;
+	height: 40px;
+	overflow: hidden;
+	transition: all .3s ease;
+	margin: 0 50px 10px 0;
+	vertical-align: top;
+	float: left;
+}
+
+.languagepicker:hover {
+	/* don't forget the 1px border */
+	height: 81px;
+}
+
+.languagepicker a{
+	color: #000;
+	text-decoration: none;
+}
+
+.languagepicker li {
+	display: block;
+	line-height: 40px;
+}
+
+.languagepicker a:first-child li {
+	border: none;
+	background: transparent !important;
+}
+
 
 /*BOOTSTRAP CLASS*/
 
 .jumbotron {
     padding: 2rem 1rem;
+    background-color: transparent;
+}
+
+
+/*ARTISTICAPPROACH & CGV*/
+
+#artisticApproach {
+    width: 75%;
+    text-align: center;
+    margin: 10px 10%;
+    padding: 10px 10px;
+}
+
+#cgv {
+    width: 75%;
+    text-align: center;
+    margin: 10px 10%;
+    padding: 10px 10px;
 }
 
 /*PICTURES & ANIMATIONS*/
-
 
 #BlancDeBlancCarousel:hover>a,
 #CouleursEtMatieresCarousel:hover>a,
@@ -57,14 +130,47 @@ a img {
 }
 
 a img:hover {
-    transform: scale(1.2);
-    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.1);
+    /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.paintingimage a {
+    color: white;
+    text-decoration: none;
+}
+
+.paintingimage a p {
+    position: relative;
+    z-index: 1;
+    transform: translateY(-100%);
+    display: none;
 }
 
 #painting_show {
     display: block;
     margin: 10px auto;
 }
+
+.paintingimage:hover .showonhover {
+    display: block;
+}
+
+.showonhover {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.377);
+    transform: translateY(-100%);
+    text-shadow: 2px 2px 2px #000;
+    /*http://www.debray-jerome.fr/outils/Generateur-de-box-shadow-css3.html*/
+    -moz-box-shadow: 0px 0px 5px 5px #656565;
+    -webkit-box-shadow: 0px 0px 5px 5px #656565;
+    -o-box-shadow: 0px 0px 5px 5px #656565;
+    box-shadow: 0px 0px 5px 5px #656565;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=5);
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+}
+
 
 /*FORMS*/
 
@@ -114,12 +220,12 @@ form button {
     text-align: center;
 }
 
-#login_form input{
+#login_form input {
     width: 50%;
     margin: 0 auto;
 }
 
-#login_form .btn{
+#login_form .btn {
     margin: 0 auto;
 }
 
@@ -127,6 +233,7 @@ form button {
     text-align: center;
     width: 50%;
 }
+
 
 /*TABLES*/
 
@@ -136,4 +243,13 @@ table {
 
 td {
     max-width: 30%;
+}
+
+
+/*RESPONSIVE*/
+
+@media screen and (max-width: 576px) {
+    .paintingimage {
+        margin: 5px 12.5%;
+    }
 }

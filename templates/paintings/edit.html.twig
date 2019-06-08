@@ -3,8 +3,14 @@
 {% block title %}Edit Paintings{% endblock %}
 
 {% block body %}
-    <h1>Edit Paintings</h1>
-    <a class="self-align-center" href="{{ path('paintings_index') }}">back to list</a>
-    {{ include('paintings/_form.html.twig', {'button_label': 'Update'}) }}
-    {{ include('paintings/_delete_form.html.twig') }}
+<h1>Edit Paintings</h1>
+{% dump(painting) %}
+<div class="text-center">
+    <img src="{{ asset('uploads/pictures/' ~ painting.picture) }}" alt="{{ painting.title }}">
+</div>
+<div class="text-center my-3">
+    <a href="{{ path('paintings_index') }}">back to list</a>
+</div>
+{{ include('paintings/_form.html.twig', {'button_label': 'Update'}) }}
+{{ include('paintings/_delete_form.html.twig') }}
 {% endblock %}

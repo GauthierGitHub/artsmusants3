@@ -5,8 +5,6 @@ namespace App\Controller;
 use App\Entity\Sales;
 use App\Form\SalesType;
 use App\Repository\SalesRepository;
-use App\Repository\PaintingsRepository;
-use App\Repository\CustomersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

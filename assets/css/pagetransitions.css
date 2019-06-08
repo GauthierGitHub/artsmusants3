@@ -5,14 +5,22 @@
 */
 
 @keyframes bg-fade-in {
-    from { background-color: black }
+  from {
+    background-color: black
   }
-  @keyframes content-fade-in {
-    from { opacity: 0 }
+}
+
+@keyframes content-fade-in {
+  from {
+    opacity: 0
   }
-  
-  html {
-    animation: 1s bg-fade-in;
-    background-color: rgb(28, 32, 37);
-  }
-  body { animation: 1.5s content-fade-in }
+}
+
+html {
+  animation: 4s bg-fade-in;
+  background-color: rgb(28, 32, 37);
+}
+
+body {
+  animation: 4s content-fade-in
+}

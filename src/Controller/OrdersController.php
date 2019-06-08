@@ -12,6 +12,9 @@ use App\Repository\SalesRepository;
 use App\Entity\Customers;
 use App\Form\CustomersType;
 
+/**
+ * @Route("{_locale}")
+ */
 class OrdersController extends AbstractController
 {
     /**
@@ -154,6 +157,24 @@ class OrdersController extends AbstractController
                 ->setBody(
                     $this->renderView(
                         'emails.html.twig',
+                        [
+                            'name' => $customer->getFirstName(),
+                            'painting' => $painting->getTitle(),
+                            'price' => $painting->getPrice(),
+                            'action' => 'buy',
+                        ]
+                    ),
+                    'text/html'
+                );
+            $mailer->send($message);
+
+            //admin mail
+            $message = (new \Swift_Message('Arts Musants - Booking'))
+                ->setFrom('artsmusants.com@gmail.com')
+                ->setTo('artsmusants.com@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'emailsAdmin.html.twig',
                         [
                             'name' => $customer->getFirstName(),
                             'painting' => $painting->getTitle(),

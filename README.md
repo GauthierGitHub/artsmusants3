@@ -24,6 +24,20 @@ CONFIGURATION:
         all folder must be in assets folder
         yarn encore dev
         see result in public/build
+    Paginator
+        https://github.com/KnpLabs/KnpPaginatorBundle
+        composer require knplabs/knp-paginator-bundle
+    Masonry
+        npm install masonry-layout
+        npm install jquery-bridget
+        https://masonry.desandro.com/extras.html#bootstrap
+    Translator v4.2.7
+        composer require symfony/translation
+        updates the French translation file with the missing strings for that locale
+            php bin/console translation:update --dump-messages --force fr
+            php bin/console cache:clear
+    Font Awesome
+        yarn add --dev @fortawesome/fontawesome-free
 
 SERVER (localhost:8000):
 
