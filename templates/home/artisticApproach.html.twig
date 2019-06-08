@@ -1,10 +1,11 @@
 {% extends 'basePublic.html.twig' %}
 
-{% block title %}Artistic approach - Arts Musants{% endblock %}
+{% block title %}{% trans %}Artistic approach{% endtrans %} - Arts Musants{% endblock %}
 
 {% block body %}
 <section id="artisticApproach">
-    <h1>Artistic approach</h1>
+    <h1>{% trans %}Artistic approach{% endtrans %}</h1>
+    {% trans %}
     <p>
         After exploring <strong>Impressionism</strong>, then <strong>Expressionism</strong>, I discovered through <strong>Eugene Leroy</strong>'s work, the burying of
         shape under successive layers. This lead me to abstraction with structured density. Nevertheless Zao-Wou-Ki's
@@ -19,5 +20,6 @@
     <p>
         I try, through my painting to give a certain sense of humour, but a taste of the sacred too. I waver between
         different worlds and lanes; but I'll explore them till the end.</p>
+    {% endtrans %}
 </section>
 {% endblock %}

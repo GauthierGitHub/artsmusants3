@@ -56,6 +56,42 @@ a {
 }
 
 
+/*LANGUAGE PICKER*/
+
+
+.languagepicker {
+	background-color: transparent;
+	display: inline-block;
+	padding: 0;
+	height: 40px;
+	overflow: hidden;
+	transition: all .3s ease;
+	margin: 0 50px 10px 0;
+	vertical-align: top;
+	float: left;
+}
+
+.languagepicker:hover {
+	/* don't forget the 1px border */
+	height: 81px;
+}
+
+.languagepicker a{
+	color: #000;
+	text-decoration: none;
+}
+
+.languagepicker li {
+	display: block;
+	line-height: 40px;
+}
+
+.languagepicker a:first-child li {
+	border: none;
+	background: transparent !important;
+}
+
+
 /*BOOTSTRAP CLASS*/
 
 .jumbotron {
@@ -64,7 +100,7 @@ a {
 }
 
 
-/*artisticApproach & cgv*/
+/*ARTISTICAPPROACH & CGV*/
 
 #artisticApproach {
     width: 75%;

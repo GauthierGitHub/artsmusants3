@@ -12,6 +12,9 @@ use App\Repository\SalesRepository;
 use App\Entity\Customers;
 use App\Form\CustomersType;
 
+/**
+ * @Route("{_locale}")
+ */
 class OrdersController extends AbstractController
 {
     /**

@@ -11,6 +11,15 @@ require('../css/pagetransitions.css');
 require('../scss/app.scss');
 require('../js/imageanimation');
 
+//font awesome
+require('@fortawesome/fontawesome-free/css/all.min.css');
+require('@fortawesome/fontawesome-free/js/all.js');
+
+//logo & images
+require('../images/logo.jpg');
+require('../images/france-flag-round-icon-16.png')
+require('../images/united-kingdom-flag-round-icon-16.png')
+
 var Masonry = require('masonry-layout');
 
 var msnry = new Masonry('.grid', {

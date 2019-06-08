@@ -8,6 +8,9 @@ use App\Repository\PaintingsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Knp\Component\Pager\PaginatorInterface;
 
+/**
+ * @Route("{_locale}")
+ */
 class WhitespiritController extends AbstractController
 {
     /**

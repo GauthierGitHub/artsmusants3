@@ -5,3 +5,9 @@
 logout:
   path: /logout
   controller: App\Controller\HomeController::index
+
+/:
+    path: /{_locale}/
+    controller: App\Controller\HomeController::index
+    requirements:
+        _locale: en|fr

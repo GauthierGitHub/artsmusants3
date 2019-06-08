@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="7y0B7KL" resname="Artistic approach">
+        <source>Artistic approach</source>
+        <target>Démarche artistique</target>
+      </trans-unit>
+      <trans-unit id="klocHZh" resname="&lt;p&gt;&#10;        After exploring &lt;strong&gt;Impressionism&lt;/strong&gt;, then &lt;strong&gt;Expressionism&lt;/strong&gt;, I discovered through &lt;strong&gt;Eugene Leroy&lt;/strong&gt;'s work, the burying of&#10;        shape under successive layers. This lead me to abstraction with structured density. Nevertheless Zao-Wou-Ki's&#10;        Lyric Abstraction inspired me watercolour effects I mixed with my thick matters.&lt;/p&gt;&#10;    &lt;p&gt;&#10;        I chose not to give up anything : neither matters weight, nor watercolour lightness, neither colour, nor its&#10;        lack ; not even line or collage.&lt;/p&gt;&#10;    &lt;p&gt;&#10;        I followed &lt;strong&gt;Klein&lt;/strong&gt; and &lt;strong&gt;Soulages&lt;/strong&gt; in their monochromes, &lt;strong&gt;Malevitch&lt;/strong&gt; and &lt;strong&gt;Ryman&lt;/strong&gt; on their white ways.&lt;/p&gt;&#10;    &lt;p&gt;&#10;        I like to work series and I wander from one to another according to my inspirations&lt;/p&gt;&#10;    &lt;p&gt;&#10;        I try, through my painting to give a certain sense of humour, but a taste of the sacred too. I waver between&#10;        different worlds and lanes; but I'll explore them till the end.&lt;/p&gt;">
+        <source>&lt;p&gt;
+        After exploring &lt;strong&gt;Impressionism&lt;/strong&gt;, then &lt;strong&gt;Expressionism&lt;/strong&gt;, I discovered through &lt;strong&gt;Eugene Leroy&lt;/strong&gt;'s work, the burying of
+        shape under successive layers. This lead me to abstraction with structured density. Nevertheless Zao-Wou-Ki's
+        Lyric Abstraction inspired me watercolour effects I mixed with my thick matters.&lt;/p&gt;
+    &lt;p&gt;
+        I chose not to give up anything : neither matters weight, nor watercolour lightness, neither colour, nor its
+        lack ; not even line or collage.&lt;/p&gt;
+    &lt;p&gt;
+        I followed &lt;strong&gt;Klein&lt;/strong&gt; and &lt;strong&gt;Soulages&lt;/strong&gt; in their monochromes, &lt;strong&gt;Malevitch&lt;/strong&gt; and &lt;strong&gt;Ryman&lt;/strong&gt; on their white ways.&lt;/p&gt;
+    &lt;p&gt;
+        I like to work series and I wander from one to another according to my inspirations&lt;/p&gt;
+    &lt;p&gt;
+        I try, through my painting to give a certain sense of humour, but a taste of the sacred too. I waver between
+        different worlds and lanes; but I'll explore them till the end.&lt;/p&gt;</source>
+        <target><![CDATA[__<p>
+        After exploring <strong>Impressionism</strong>, then <strong>Expressionism</strong>, I discovered through <strong>Eugene Leroy</strong>'s work, the burying of
+        shape under successive layers. This lead me to abstraction with structured density. Nevertheless Zao-Wou-Ki's
+        Lyric Abstraction inspired me watercolour effects I mixed with my thick matters.</p>
+    <p>
+        I chose not to give up anything : neither matters weight, nor watercolour lightness, neither colour, nor its
+        lack ; not even line or collage.</p>
+    <p>
+        I followed <strong>Klein</strong> and <strong>Soulages</strong> in their monochromes, <strong>Malevitch</strong> and <strong>Ryman</strong> on their white ways.</p>
+    <p>
+        I like to work series and I wander from one to another according to my inspirations</p>
+    <p>
+        I try, through my painting to give a certain sense of humour, but a taste of the sacred too. I waver between
+        different worlds and lanes; but I'll explore them till the end.</p>]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
