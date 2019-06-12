@@ -10,6 +10,7 @@ use App\Repository\PaintingsRepository;
 use App\Repository\CustomersRepository;
 use App\Repository\SalesRepository;
 use App\Entity\Customers;
+use App\Entity\Sales;
 use App\Form\CustomersType;
 
 /**
@@ -115,7 +116,7 @@ class OrdersController extends AbstractController
                 $entityManager->persist($customer);
                 $entityManager->flush();
 
-                return $this->forward('App\Controller\SalesController::checkout', [
+                return $this->forward('App\Controller\OrdersController::checkout', [
                     'customer' => $customer,
                     'painting' => $painting,
                 ]);
@@ -128,6 +129,40 @@ class OrdersController extends AbstractController
         }
     }
 
+    /**
+     * @Route("/checkout", name="sales_checkout", methods={"GET","POST"})
+     */
+    public function checkout(Request $request, SalesRepository $salesRepository, $painting, $customer): Response
+    {
+        //check if painting is already sale
+        $painting_id = $painting->getId();
+        $painting_saled = $salesRepository->findBy(['painting' => $painting_id, 'canceled' => 0]);
+
+        if (!empty($painting_saled)) {
+            return $this->render('orders/notavaible.html.twig');
+        } else {
+            //customer and sale are recorded. Sale is recorded canceled and not canceled before payment;
+            $sale = new Sales;
+            $sale->setCustomer($customer)
+                ->setPainting($painting)
+                ->setDate(new \DateTime())
+                ->setCanceled(true);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($sale);
+            $entityManager->flush();
+            try {
+                $entityManager->flush();
+
+                return $this->render('orders/checkout.html.twig', [
+                    'painting' => $painting,
+                    'customer' => $customer,
+                    'sale_id' => $sale->getId(),
+                ]);
+            } catch (\Doctrine\DBAL\DBALException $error) {
+                return $this->render('orders/notavaible.html.twig');
+            }
+        }
+    }
 
     /**
      * @Route("/stripe", name="sales_stripe", methods={"POST"})
