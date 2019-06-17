@@ -12,6 +12,7 @@ use App\Repository\SalesRepository;
 use App\Entity\Customers;
 use App\Entity\Sales;
 use App\Form\CustomersType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("{_locale}")
@@ -111,6 +112,7 @@ class OrdersController extends AbstractController
             $form = $this->createForm(CustomersType::class, $customer);
             $form->handleRequest($request);
 
+            // Customer is writted in db for next page
             if ($form->isSubmitted() && $form->isValid()) {
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($customer);
@@ -141,7 +143,7 @@ class OrdersController extends AbstractController
         if (!empty($painting_saled)) {
             return $this->render('orders/notavaible.html.twig');
         } else {
-            //customer and sale are recorded. Sale is recorded canceled and not canceled before payment;
+            //customer is already sale in Painting::buy. Sale is recorded canceled and not canceled before payment;
             $sale = new Sales;
             $sale->setCustomer($customer)
                 ->setPainting($painting)
@@ -157,6 +159,8 @@ class OrdersController extends AbstractController
                     'painting' => $painting,
                     'customer' => $customer,
                     'sale_id' => $sale->getId(),
+                    // resolve symfony bug with routing
+                    'controller_name' => 'checkout',
                 ]);
             } catch (\Doctrine\DBAL\DBALException $error) {
                 return $this->render('orders/notavaible.html.twig');
@@ -167,7 +171,7 @@ class OrdersController extends AbstractController
     /**
      * @Route("/stripe", name="sales_stripe", methods={"POST"})
      */
-    public function stripe(\Swift_Mailer $mailer, PaintingsRepository $paintingsRepository, CustomersRepository $customersRepository, SalesRepository $salesRepository): Response
+    public function stripe(\Swift_Mailer $mailer, PaintingsRepository $paintingsRepository, CustomersRepository $customersRepository, SalesRepository $salesRepository, TranslatorInterface $translator): Response
     {
         $painting = $paintingsRepository->find($_POST['painting_id']);
         $customer = $customersRepository->find($_POST['customer_id']);
@@ -186,7 +190,7 @@ class OrdersController extends AbstractController
             ]);
 
             //confirmation mail
-            $message = (new \Swift_Message('Arts Musants - Booking'))
+            $message = (new \Swift_Message('Arts Musants'))
                 ->setFrom('artsmusants.com@gmail.com')
                 ->setTo($customer->getEmail())
                 ->setBody(
@@ -196,15 +200,14 @@ class OrdersController extends AbstractController
                             'name' => $customer->getFirstName(),
                             'painting' => $painting->getTitle(),
                             'price' => $painting->getPrice(),
-                            'action' => 'buy',
-                        ]
+                            'action' => $translator->trans('buy'),                        ]
                     ),
                     'text/html'
                 );
             $mailer->send($message);
 
             //admin mail
-            $message = (new \Swift_Message('Arts Musants - Booking'))
+            $message = (new \Swift_Message('Arts Musants'))
                 ->setFrom('artsmusants.com@gmail.com')
                 ->setTo('artsmusants.com@gmail.com')
                 ->setBody(
@@ -214,7 +217,7 @@ class OrdersController extends AbstractController
                             'name' => $customer->getFirstName(),
                             'painting' => $painting->getTitle(),
                             'price' => $painting->getPrice(),
-                            'action' => 'buy',
+                            'action' => $translator->trans('buy'),
                         ]
                     ),
                     'text/html'
@@ -230,7 +233,7 @@ class OrdersController extends AbstractController
                 'painting' => $painting->getTitle(),
                 'name' => $customer->getFirstname(),
                 'email' => $customer->getEmail(),
-                'action' => 'sale',
+                'action' => $translator->trans('buy'),
             ]);
         } catch (Exception $error) {
 
