@@ -29,7 +29,10 @@
     {% if current_menu is defined and current_menu == 'home'%} hidden {% endif %}">
         <a class="navbar-brand" href="{{ path('home')}}">Arts Musants</a>
         <div>
-            {% include 'navLanguage.twig' %}
+            {% if controller_name is defined and controller_name == 'checkout'%}
+            {% else %}
+                {% include 'navLanguage.twig' %}
+            {% endif %}
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

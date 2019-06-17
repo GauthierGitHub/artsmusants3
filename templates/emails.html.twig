@@ -1,4 +1,31 @@
-<h3>Thanks for {{ action }} {{ name }} !</h3>
+<h3>{% trans %}Thanks{% endtrans %} {{ name }} !</h3>
 
-Hi {{ name }}! You're successfully {{ action }} {{ painting }} at Arts Musants !
+<p>
+    {% trans %}Hi{% endtrans %} {{ name }}! {% trans %}You're successfully{% endtrans %} {{ action }} {{ painting }}
+    {% trans %}at{% endtrans %} Arts Musants !
+</p>
+
+<h3>{% trans %}Bild{% endtrans %}</h3>
+<p>Catherine BARBET</p>
+<p>Arts Musants</p>
+<p> Chemin de la Pellegrine</p>
+<p> 83790 PIGNANS</p>
+<p> FRANCE</p>
+<p> +339 63 24 66 30</p>
+<p> +336 60 55 93 84</p>
+<p> artsmusants.com@gmail.com</p>
+<p> Siret : 522 42397900015</p>
+<p> MDA : CA 51902</p>
+
 {{ painting }} : {{price}}
+
+<p>
+    {% trans %}Payed with credit card :{% endtrans %}
+    {% if app.request.locale == 'fr' %}
+    {{ "now"|date("d/m/Y", "Europe/Paris") }}
+    {% else %}
+    {{ "now"|date("m/d/Y", "Europe/Paris") }}
+    {% endif %}
+</p>
+
+<p>{% trans %}VAT not applicable, article 293B of the CGI{% endtrans %}</p>

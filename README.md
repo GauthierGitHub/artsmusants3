@@ -36,6 +36,8 @@ CONFIGURATION:
         updates the French translation file with the missing strings for that locale
             php bin/console translation:update --dump-messages --force fr
             php bin/console cache:clear
+        To inspect all messages in the fr locale for the application, run:
+             php bin/console debug:translation fr
     Font Awesome
         yarn add --dev @fortawesome/fontawesome-free
 

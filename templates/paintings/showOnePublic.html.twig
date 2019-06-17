@@ -6,7 +6,7 @@
 <div class="row">
     <h2 class="col-12 mt-4">{{ painting.title }}</h2>
     <div class="col-12 text-center">
-        <a href="{{ path('sale', { 'painting_id': painting.id}) }}">Buy</a>
+        <a href="{{ path('sale', { 'painting_id': painting.id}) }}">{% trans %}Buy{% endtrans %}</a>
     </div>
     <img class="col-6 mt-4 mx-auto" src="{{ asset('uploads/pictures/' ~ painting.picture) }}"
         alt="{{ painting.title }}">

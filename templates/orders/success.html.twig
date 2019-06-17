@@ -4,10 +4,10 @@
 
 {% block body %}
 <div class="text-center mt-4">
-    <h3>Thanks for {{ action }} {{ name }} !</h3>
+    <h3>{% trans %}Thanks{% endtrans %} {{ name }} !</h3>
 
-    <p>You're successfully {{ action }} {{ painting }} at Arts Musants ! </p>
-    <p>A confirmation email has been sent to you at {{ email }} !</p>
-    <a href="{{ path('home') }}">Back to home</a>
+    <p>{% trans %}You're successfully{% endtrans %} {{ action }} {{ painting }} {% trans %}at Arts Musants !{% endtrans %}</p>
+    <p>{% trans %}A confirmation email has been sent to you at{% endtrans %} {{ email }} !</p>
+    <a href="{{ path('home') }}">{% trans %}Back{% endtrans %}</a>
 </div>
 {% endblock %}

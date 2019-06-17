@@ -14,7 +14,8 @@ security:
             anonymous: true
             logout:
                 path: /logout
-                target: /
+                target: /en/
+
 
             # activate different ways to authenticate
 
@@ -23,6 +24,7 @@ security:
 
             form_login: 
                 check_path: login
+                default_target_path: paintings_index
             # https://symfony.com/doc/current/security/form_login_setup.html
 
 
