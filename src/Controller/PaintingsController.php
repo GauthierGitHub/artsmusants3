@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException; //for file upload
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * @Route("admin/paintings")
@@ -30,13 +32,20 @@ class PaintingsController extends AbstractController
     /**
      * @Route("/new", name="paintings_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Filesystem $filesystem): Response
     {
         $painting = new Paintings();
         $form = $this->createForm(PaintingsType::class, $painting);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //https://symfony.com/doc/current/components/filesystem.html
+            try {
+                $filesystem->mkdir($this->getParameter('pictures_directory').'/');
+            } catch (IOExceptionInterface $exception) {
+                echo "An error occurred while creating your directory at ".$exception->getPath();
+            }
 
             // $file stores the uploaded PDF file bad doc in https://symfony.com/doc/current/controller/upload_file.html
             // Correction to official doc : wrong adress

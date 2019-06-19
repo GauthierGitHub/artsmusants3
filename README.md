@@ -40,6 +40,8 @@ CONFIGURATION:
              php bin/console debug:translation fr
     Font Awesome
         yarn add --dev @fortawesome/fontawesome-free
+    Filesystem (chmod on server)
+        composer require symfony/filesystem
 
 SERVER (localhost:8000):
 
