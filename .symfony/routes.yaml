@@ -1,0 +1,2 @@
+"https://{default}/": { type: upstream, upstream: "artsmusants3:http" }
+"http://{default}/": { type: redirect, to: "https://{default}/" }
