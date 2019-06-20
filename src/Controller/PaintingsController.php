@@ -42,16 +42,17 @@ class PaintingsController extends AbstractController
 
             //https://symfony.com/doc/current/components/filesystem.html
             try {
-                $filesystem->mkdir($this->getParameter('pictures_directory').'/');
+                $filesystem->chmod($this->getParameter('pictures_directory'), 0777);
             } catch (IOExceptionInterface $exception) {
-                echo "An error occurred while creating your directory at ".$exception->getPath();
+                echo "".$exception->getPath();
+                exit();
             }
 
             // $file stores the uploaded PDF file bad doc in https://symfony.com/doc/current/controller/upload_file.html
             // Correction to official doc : wrong adress
             // vendor/symfony/http-foundation/File/UploadedFile.php
             /** @var Symfony\HttpFoundation\File\UploadedFile $file */
-            $file = $form->get('picture')->getData();;
+            $file = $form->get('picture')->getData();
 
             //corrected : https://stackoverflow.com/questions/49604601/call-to-a-member-function-guessextension-on-string
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
