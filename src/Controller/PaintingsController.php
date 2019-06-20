@@ -45,7 +45,6 @@ class PaintingsController extends AbstractController
                 $filesystem->chmod($this->getParameter('pictures_directory'), 0777);
             } catch (IOExceptionInterface $exception) {
                 echo "".$exception->getPath();
-                exit();
             }
 
             // $file stores the uploaded PDF file bad doc in https://symfony.com/doc/current/controller/upload_file.html
