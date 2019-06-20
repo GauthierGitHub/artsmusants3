@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException; //for file upload
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * @Route("admin/paintings")
@@ -37,7 +38,7 @@ class PaintingsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            
             // $file stores the uploaded PDF file bad doc in https://symfony.com/doc/current/controller/upload_file.html
             // Correction to official doc : wrong adress
             // vendor/symfony/http-foundation/File/UploadedFile.php
