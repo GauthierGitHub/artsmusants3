@@ -39,13 +39,14 @@ class PaintingsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            /*
             //https://symfony.com/doc/current/components/filesystem.html
             try {
                 $filesystem->chmod($this->getParameter('pictures_directory'), 0777);
             } catch (IOExceptionInterface $exception) {
                 echo "".$exception->getPath();
             }
+            */
 
             // $file stores the uploaded PDF file bad doc in https://symfony.com/doc/current/controller/upload_file.html
             // Correction to official doc : wrong adress
