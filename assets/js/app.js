@@ -9,7 +9,8 @@
 require('../css/app.css');
 require('../css/pagetransitions.css');
 require('../scss/app.scss');
-require('../js/imageanimation');
+require('../js/imageanimation.js');
+require('../js/masonrybugfix.js');
 
 //font awesome
 require('@fortawesome/fontawesome-free/css/all.min.css');

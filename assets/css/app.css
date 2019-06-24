@@ -133,7 +133,7 @@ a img:hover {
     transform: scale(1.1);
     /* (120% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
-
+/* "instagram style"
 .paintingimage a {
     color: white;
     text-decoration: none;
@@ -160,7 +160,6 @@ a img:hover {
     background-color: rgba(0, 0, 0, 0.377);
     transform: translateY(-100%);
     text-shadow: 2px 2px 2px #000;
-    /*http://www.debray-jerome.fr/outils/Generateur-de-box-shadow-css3.html*/
     -moz-box-shadow: 0px 0px 5px 5px #656565;
     -webkit-box-shadow: 0px 0px 5px 5px #656565;
     -o-box-shadow: 0px 0px 5px 5px #656565;
@@ -170,7 +169,7 @@ a img:hover {
     -webkit-border-radius: 100px;
     border-radius: 100px;
 }
-
+*/
 
 /*FORMS*/
 
