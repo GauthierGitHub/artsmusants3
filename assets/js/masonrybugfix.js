@@ -13,3 +13,7 @@ $('.item img').load(function(){
         "columnWidth": 200,
     });
 })
+
+$('.cgvauthor').masonry({
+  originTop: false
+});
