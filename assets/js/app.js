@@ -21,8 +21,8 @@ require('../images/logo.jpg');
 require('../images/france-flag-round-icon-16.png')
 require('../images/united-kingdom-flag-round-icon-16.png')
 
+//Masonry
 var Masonry = require('masonry-layout');
-
 var msnry = new Masonry('.grid', {
   // options...
 });
