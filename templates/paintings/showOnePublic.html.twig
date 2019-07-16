@@ -8,7 +8,7 @@
     <div class="col-12 text-center">
         <a href="{{ path('sale', { 'painting_id': painting.id}) }}">{% trans %}Buy{% endtrans %}</a>
     </div>
-    <img class="col-6 mt-4 mx-auto" src="{{ asset('uploads/pictures/' ~ painting.picture) }}"
+    <img class="col-6 mt-4 mx-auto my-auto" src="{{ asset('uploads/pictures/' ~ painting.picture) }}"
         alt="{{ painting.title }}">
     <p class="col-12 text-center">{{ painting.height }}cm x {{ painting.width }}cm</p>
     <p class="col-12 text-center">{{ painting.year }}</p>

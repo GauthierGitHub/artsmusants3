@@ -9,7 +9,8 @@
 require('../css/app.css');
 require('../css/pagetransitions.css');
 require('../scss/app.scss');
-require('../js/imageanimation');
+require('../js/imageanimation.js');
+require('../js/masonrybugfix.js');
 
 //font awesome
 require('@fortawesome/fontawesome-free/css/all.min.css');
@@ -20,8 +21,8 @@ require('../images/logo.jpg');
 require('../images/france-flag-round-icon-16.png')
 require('../images/united-kingdom-flag-round-icon-16.png')
 
+//Masonry
 var Masonry = require('masonry-layout');
-
 var msnry = new Masonry('.grid', {
   // options...
 });
