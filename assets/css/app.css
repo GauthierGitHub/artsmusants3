@@ -71,7 +71,7 @@ a {
 	float: left;
 }
 
-.languagepicker:hover {
+.languagepicker:hover, .languagepicker:hover  {
 	/* don't forget the 1px border */
 	height: 81px;
 }
