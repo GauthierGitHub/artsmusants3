@@ -21,6 +21,9 @@ require('../images/logo.jpg');
 require('../images/france-flag-round-icon-16.png')
 require('../images/united-kingdom-flag-round-icon-16.png')
 
+//Language picker responsive
+document.addEventListener("touchstart", function() {}, true);
+
 //Masonry
 var Masonry = require('masonry-layout');
 var msnry = new Masonry('.grid', {
