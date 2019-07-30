@@ -18,6 +18,7 @@ class CustomersType extends AbstractType
             ->add('address')
             ->add('postalcode')
             ->add('city')
+            ->add('country')
         ;
     }
 
