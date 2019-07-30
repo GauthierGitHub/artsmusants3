@@ -15,7 +15,8 @@
                 <th>Address</th>
                 <th>Postalcode</th>
                 <th>City</th>
-                <th>actions</th>
+                <th>Country</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
                 <td>{{ customer.address }}</td>
                 <td>{{ customer.postalcode }}</td>
                 <td>{{ customer.city }}</td>
+                <td>{{ customer.country }}</td>
                 <td>
                     <a href="{{ path('customers_show', {'id': customer.id}) }}">show</a>
                     <a href="{{ path('customers_edit', {'id': customer.id}) }}">edit</a>
